@@ -1,5 +1,6 @@
 import LaunchRoundedIcon from '@mui/icons-material/LaunchRounded'
 import { Box, Button, Chip, Stack, Typography } from '@mui/material'
+import { useI18n } from '../../i18n/useI18n'
 
 export type ProjectItem = {
   title: string
@@ -13,6 +14,8 @@ type ProjectCardProps = {
 }
 
 function ProjectCard({ project, projectNumber }: ProjectCardProps) {
+  const { t } = useI18n()
+
   return (
     <Box
       sx={{
@@ -45,6 +48,8 @@ function ProjectCard({ project, projectNumber }: ProjectCardProps) {
 
           <Typography
             variant="h4"
+            translate="no"
+            className="notranslate"
             sx={{
               color: 'text.primary',
               fontSize: { xs: '1.5rem', md: '1.9rem' },
@@ -87,7 +92,7 @@ function ProjectCard({ project, projectNumber }: ProjectCardProps) {
           endIcon={<LaunchRoundedIcon />}
           sx={{ alignSelf: 'flex-start', px: 0 }}
         >
-          Ver detalhes
+          {t.projects.viewDetails}
         </Button>
       </Stack>
     </Box>

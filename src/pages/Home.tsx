@@ -1,7 +1,10 @@
 import { Box, Stack, Typography } from '@mui/material'
 import PageFrame from '../components/layout/PageFrame'
+import { useI18n } from '../i18n/useI18n'
 
 function Home() {
+    const { t } = useI18n()
+
     return (
         <PageFrame>
             <Box
@@ -54,7 +57,7 @@ function Home() {
                                 textShadow: '0 2px 10px rgba(0,0,0,0.42)',
                             }}
                         >
-                            Portifólio
+                            {t.home.eyebrow}
                         </Typography>
 
                         <Box
@@ -108,7 +111,7 @@ function Home() {
                                             '0 8px 28px rgba(0, 0, 0, 0.58), 0 2px 10px rgba(0, 0, 0, 0.32)',
                                     }}
                                 >
-                                    Vinicius
+                                    {t.home.title}
                                 </Typography>
 
                                 <Typography
@@ -128,7 +131,7 @@ function Home() {
                                             '0 8px 28px rgba(0, 0, 0, 0.58), 0 2px 10px rgba(0, 0, 0, 0.32)',
                                     }}
                                 >
-                                    Bariane
+                                    {t.home.subtitle}
                                 </Typography>
                             </Stack>
                         </Box>
@@ -145,8 +148,7 @@ function Home() {
                                 textShadow: '0 2px 14px rgba(0,0,0,0.48)',
                             }}
                         >
-                            Programação fullstack com experiência em desenvolvimento em PHP, Javascript, React,
-                            .NET e outras tecnologias.
+                            {t.home.description}
                         </Typography>
                     </Stack>
                 </Box>

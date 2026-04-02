@@ -1,9 +1,12 @@
 import { Box, Chip, Stack, Typography } from '@mui/material'
 import PageFrame from '../components/layout/PageFrame'
+import { useI18n } from '../i18n/useI18n'
 
 const skills = ['React', 'TypeScript', 'UI Design', 'Motion', 'WebGL', 'Design Systems']
 
 function About() {
+  const { t } = useI18n()
+
   return (
     <PageFrame>
       <Box
@@ -38,7 +41,7 @@ function About() {
                   textShadow: '0 2px 10px rgba(0,0,0,0.42)',
                 }}
               >
-                sobre
+                {t.about.eyebrow}
               </Typography>
 
               <Typography
@@ -50,7 +53,7 @@ function About() {
                     '0 8px 28px rgba(0, 0, 0, 0.58), 0 2px 10px rgba(0, 0, 0, 0.32)',
                 }}
               >
-                Construo interfaces com foco em clareza, ritmo e identidade.
+                {t.about.title}
               </Typography>
 
               <Typography
@@ -63,9 +66,7 @@ function About() {
                   textShadow: '0 2px 14px rgba(0,0,0,0.48)',
                 }}
               >
-                Meu trabalho combina desenvolvimento front-end com direcao visual. Gosto de criar
-                experiencias que parecem precisas, leves e com personalidade, sem perder legibilidade
-                ou estrutura.
+                {t.about.description}
               </Typography>
             </Stack>
 
@@ -83,12 +84,10 @@ function About() {
               >
                 <Stack spacing={2.25}>
                   <Typography variant="h5" sx={{ color: 'text.primary' }}>
-                    Como eu penso produto
+                    {t.about.productTitle}
                   </Typography>
                   <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8 }}>
-                    Interface boa nao e so estetica. Ela precisa orientar leitura, hierarquia,
-                    acao e percepcao de valor. Meu foco esta em transformar isso em layout,
-                    interacao e implementacao consistente.
+                    {t.about.productDescription}
                   </Typography>
                 </Stack>
               </Box>
@@ -106,7 +105,7 @@ function About() {
               >
                 <Stack spacing={2.25}>
                   <Typography variant="h5" sx={{ color: 'text.primary' }}>
-                    Stack e repertorio
+                    {t.about.stackTitle}
                   </Typography>
 
                   <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
@@ -126,8 +125,7 @@ function About() {
                   </Stack>
 
                   <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8 }}>
-                    Trabalho melhor quando design e codigo evoluem juntos. Isso significa pensar a
-                    interface tanto como experiencia quanto como sistema.
+                    {t.about.stackDescription}
                   </Typography>
                 </Stack>
               </Box>

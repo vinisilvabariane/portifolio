@@ -1,5 +1,6 @@
 import { Box } from '@mui/material'
 import { NavLink } from 'react-router-dom'
+import { useI18n } from '../../i18n/useI18n'
 
 type NavItem = {
   label: string
@@ -7,14 +8,16 @@ type NavItem = {
   end?: boolean
 }
 
-const navItems = [
-  { label: 'Home', to: '/', end: true },
-  { label: 'Projetos', to: '/projetos' },
-  { label: 'Sobre', to: '/sobre' },
-  { label: 'Contato', to: '/contato' },
-] satisfies NavItem[]
-
 function SiteNav() {
+  const { t } = useI18n()
+
+  const navItems = [
+    { label: t.nav.home, to: '/', end: true },
+    { label: t.nav.projects, to: '/projetos' },
+    { label: t.nav.about, to: '/sobre' },
+    { label: t.nav.contact, to: '/contato' },
+  ] satisfies NavItem[]
+
   return (
     <Box
       sx={{

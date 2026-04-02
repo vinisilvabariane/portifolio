@@ -5,31 +5,32 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useMemo, useState } from 'react'
 import PageFrame from '../components/layout/PageFrame'
 import ProjectCard, { type ProjectItem } from '../components/projects/ProjectCard'
+import { useI18n } from '../i18n/useI18n'
 
 const projects: ProjectItem[] = [
   {
     title: 'Landing Pages',
-    description: 'Colecao de interfaces focadas em conversao, ritmo visual e identidade.',
+    description: 'landingPages',
     tags: ['React', 'MUI', 'Motion'],
   },
   {
     title: 'UI Experiments',
-    description: 'Exploracoes com shaders, backgrounds interativos e composicoes editoriais.',
+    description: 'uiExperiments',
     tags: ['WebGL', 'Three', 'Creative UI'],
   },
   {
     title: 'Design Systems',
-    description: 'Bases reutilizaveis para componentes, temas e navegacao de produto.',
+    description: 'designSystems',
     tags: ['Tokens', 'Accessibility', 'Scalability'],
   },
   {
     title: 'Creative Portfolios',
-    description: 'Estruturas editoriais com foco em narrativa visual, impacto e leitura.',
+    description: 'creativePortfoliosA',
     tags: ['Branding', 'Editorial', 'Frontend'],
   },
   {
     title: 'Creative Portfolios',
-    description: 'Estruturas editoriais com foco em narrativa visual, impacto e leitura.',
+    description: 'creativePortfoliosB',
     tags: ['Branding', 'Editorial', 'Frontend'],
   },
 ]
@@ -47,6 +48,7 @@ function chunkProjects<T>(items: T[], size: number) {
 }
 
 function Projects() {
+  const { t } = useI18n()
   const projectPages = useMemo(
     () => chunkProjects(projects, PROJECTS_PER_PAGE),
     [],
@@ -100,7 +102,7 @@ function Projects() {
                   textShadow: '0 2px 10px rgba(0,0,0,0.42)',
                 }}
               >
-                projetos
+                {t.projects.eyebrow}
               </Typography>
 
               <Typography
@@ -112,7 +114,7 @@ function Projects() {
                     '0 8px 28px rgba(0, 0, 0, 0.58), 0 2px 10px rgba(0, 0, 0, 0.32)',
                 }}
               >
-                Pagina de projetos
+                {t.projects.title}
               </Typography>
 
               <Typography
@@ -124,7 +126,7 @@ function Projects() {
                   textShadow: '0 2px 14px rgba(0,0,0,0.48)',
                 }}
               >
-                Os projetos ficam organizados em paginas de quatro cards. Conforme voce adicionar novos itens, eles entram na proxima pagina lateral.
+                {t.projects.description}
               </Typography>
             </Stack>
 
@@ -202,7 +204,13 @@ function Projects() {
                   return (
                     <ProjectCard
                       key={`${project.title}-${projectNumber}`}
-                      project={project}
+                      project={{
+                        ...project,
+                        description:
+                          t.projects.items[
+                            project.description as keyof typeof t.projects.items
+                          ],
+                      }}
                       projectNumber={projectNumber}
                     />
                   )

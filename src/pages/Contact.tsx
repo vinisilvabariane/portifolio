@@ -1,6 +1,7 @@
 import ArrowOutwardRoundedIcon from '@mui/icons-material/ArrowOutwardRounded'
 import { Box, Button, Stack, Typography } from '@mui/material'
 import PageFrame from '../components/layout/PageFrame'
+import { useI18n } from '../i18n/useI18n'
 
 const contactLinks = [
   {
@@ -21,6 +22,8 @@ const contactLinks = [
 ]
 
 function Contact() {
+  const { t } = useI18n()
+
   return (
     <PageFrame>
       <Box
@@ -55,7 +58,7 @@ function Contact() {
                   textShadow: '0 2px 10px rgba(0,0,0,0.42)',
                 }}
               >
-                contato
+                {t.contact.eyebrow}
               </Typography>
 
               <Typography
@@ -67,7 +70,7 @@ function Contact() {
                     '0 8px 28px rgba(0, 0, 0, 0.58), 0 2px 10px rgba(0, 0, 0, 0.32)',
                 }}
               >
-                Vamos conversar sobre produto, interface e novas ideias.
+                {t.contact.title}
               </Typography>
 
               <Typography
@@ -80,8 +83,7 @@ function Contact() {
                   textShadow: '0 2px 14px rgba(0,0,0,0.48)',
                 }}
               >
-                Se voce tem um projeto, uma landing page para estruturar ou quer trocar ideia sobre
-                front-end e direcao visual, esta e a melhor pagina para me encontrar.
+                {t.contact.description}
               </Typography>
             </Stack>
 
@@ -127,7 +129,7 @@ function Contact() {
                       endIcon={<ArrowOutwardRoundedIcon />}
                       sx={{ alignSelf: 'flex-start', px: 0 }}
                     >
-                      Abrir contato
+                      {t.contact.openContact}
                     </Button>
                   </Stack>
                 </Box>
