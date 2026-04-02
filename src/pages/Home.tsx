@@ -1,5 +1,6 @@
 import { Box, Stack, Typography } from '@mui/material'
 import PageFrame from '../components/layout/PageFrame'
+import SplitText from '../components/split_text/SplitText'
 import { useI18n } from '../i18n/useI18n'
 
 function Home() {
@@ -83,7 +84,7 @@ function Home() {
                                         xs: 'clamp(2.9rem, 15vw, 5rem)',
                                         md: 'clamp(4.8rem, 10vw, 8rem)',
                                     },
-                                    fontFamily: "Georgia, 'Times New Roman', serif",
+                                    fontFamily: 'var(--font-primary)',
                                     fontWeight: 600,
                                     lineHeight: 0.82,
                                     letterSpacing: '0.12em',
@@ -96,9 +97,10 @@ function Home() {
                             </Typography>
 
                             <Stack spacing={0} alignItems="center" sx={{ position: 'relative', zIndex: 1 }}>
-                                <Typography
-                                    variant="h2"
+                                <Box
                                     sx={{
+                                        width: '100%',
+                                        textAlign: 'center',
                                         color: '#f8f7fb',
                                         fontSize: {
                                             xs: 'clamp(2.35rem, 10.5vw, 4rem)',
@@ -109,16 +111,33 @@ function Home() {
                                         textTransform: 'uppercase',
                                         textShadow:
                                             '0 8px 28px rgba(0, 0, 0, 0.58), 0 2px 10px rgba(0, 0, 0, 0.32)',
+                                        '& .split-home-title': {
+                                            margin: 0,
+                                            color: 'inherit',
+                                            fontSize: 'inherit',
+                                            fontWeight: 600,
+                                            lineHeight: 'inherit',
+                                            letterSpacing: 'inherit',
+                                            textTransform: 'inherit',
+                                        },
                                     }}
                                 >
-                                    {t.home.title}
-                                </Typography>
+                                    <SplitText
+                                        text={t.home.title}
+                                        tag="h2"
+                                        textAlign="center"
+                                        display="block"
+                                        splitType="words"
+                                        delay={90}
+                                        className="split-home-title"
+                                    />
+                                </Box>
 
-                                <Typography
-                                    variant="h2"
+                                <Box
                                     sx={{
+                                        width: '100%',
+                                        textAlign: 'center',
                                         mt: { xs: '-0.08em', md: '-0.04em' },
-                                        mr: { xs: '-0.45em', md: '-0.7em' },
                                         color: 'rgba(248, 247, 251, 0.96)',
                                         fontSize: {
                                             xs: 'clamp(1.6rem, 7vw, 2.7rem)',
@@ -129,10 +148,27 @@ function Home() {
                                         textTransform: 'uppercase',
                                         textShadow:
                                             '0 8px 28px rgba(0, 0, 0, 0.58), 0 2px 10px rgba(0, 0, 0, 0.32)',
+                                        '& .split-home-subtitle': {
+                                            margin: 0,
+                                            color: 'inherit',
+                                            fontSize: 'inherit',
+                                            fontWeight: 600,
+                                            lineHeight: 'inherit',
+                                            letterSpacing: 'inherit',
+                                            textTransform: 'inherit',
+                                        },
                                     }}
                                 >
-                                    {t.home.subtitle}
-                                </Typography>
+                                    <SplitText
+                                        text={t.home.subtitle}
+                                        tag="h2"
+                                        textAlign="center"
+                                        display="block"
+                                        splitType="words"
+                                        delay={80}
+                                        className="split-home-subtitle"
+                                    />
+                                </Box>
                             </Stack>
                         </Box>
 

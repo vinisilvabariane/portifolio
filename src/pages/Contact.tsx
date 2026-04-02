@@ -1,6 +1,8 @@
 import ArrowOutwardRoundedIcon from '@mui/icons-material/ArrowOutwardRounded'
 import { Box, Button, Stack, Typography } from '@mui/material'
 import PageFrame from '../components/layout/PageFrame'
+import SplitText from '../components/split_text/SplitText'
+import TiltedCard from '../components/tilted_card/TiltedCard'
 import { useI18n } from '../i18n/useI18n'
 
 const contactLinks = [
@@ -61,17 +63,33 @@ function Contact() {
                 {t.contact.eyebrow}
               </Typography>
 
-              <Typography
-                variant="h1"
+              <Box
                 sx={{
+                  width: '100%',
                   color: '#f5f7ff',
                   fontSize: { xs: 'clamp(2.6rem, 10vw, 4.4rem)', md: 'clamp(3.4rem, 7vw, 5.4rem)' },
                   textShadow:
                     '0 8px 28px rgba(0, 0, 0, 0.58), 0 2px 10px rgba(0, 0, 0, 0.32)',
+                  '& .split-page-title': {
+                    margin: 0,
+                    color: 'inherit',
+                    fontSize: 'inherit',
+                    fontWeight: 600,
+                    lineHeight: 0.95,
+                    letterSpacing: '-0.06em',
+                  },
                 }}
               >
-                {t.contact.title}
-              </Typography>
+                <SplitText
+                  text={t.contact.title}
+                  tag="h1"
+                  textAlign="left"
+                  display="block"
+                  splitType="words"
+                  delay={100}
+                  className="split-page-title"
+                />
+              </Box>
 
               <Typography
                 variant="body1"
@@ -89,50 +107,57 @@ function Contact() {
 
             <Stack spacing={2.5}>
               {contactLinks.map((item) => (
-                <Box
+                <TiltedCard
                   key={item.label}
-                  sx={{
-                    p: { xs: 3, md: 4 },
-                    border: '1px solid',
-                    borderColor: 'divider',
-                    borderRadius: 5,
-                    background:
-                      'linear-gradient(180deg, rgba(17, 21, 36, 0.82), rgba(10, 12, 20, 0.62))',
-                    backdropFilter: 'blur(14px)',
-                    transition: 'transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease',
-                    '&:hover': {
-                      transform: 'translateY(-4px)',
-                      borderColor: 'rgba(111, 124, 255, 0.42)',
-                      boxShadow: '0 16px 30px rgba(4, 8, 18, 0.24)',
-                    },
-                  }}
+                  minHeight={180}
+                  rotateAmplitude={7}
+                  scaleOnHover={1.012}
                 >
-                  <Stack spacing={1.5}>
-                    <Typography
-                      variant="overline"
-                      sx={{ color: 'primary.light', letterSpacing: '0.18em' }}
-                    >
-                      {item.label}
-                    </Typography>
+                  <Box
+                    sx={{
+                      p: { xs: 3, md: 4 },
+                      border: '1px solid',
+                      borderColor: 'divider',
+                      borderRadius: 5,
+                      background:
+                        'linear-gradient(180deg, rgba(17, 21, 36, 0.82), rgba(10, 12, 20, 0.62))',
+                      backdropFilter: 'blur(14px)',
+                      transition: 'border-color 180ms ease, box-shadow 180ms ease',
+                      '@media (hover: hover)': {
+                        '&:hover': {
+                          borderColor: 'rgba(111, 124, 255, 0.42)',
+                          boxShadow: '0 16px 30px rgba(4, 8, 18, 0.24)',
+                        },
+                      },
+                    }}
+                  >
+                    <Stack spacing={1.5}>
+                      <Typography
+                        variant="overline"
+                        sx={{ color: 'primary.light', letterSpacing: '0.18em' }}
+                      >
+                        {item.label}
+                      </Typography>
 
-                    <Typography variant="h5" sx={{ color: 'text.primary', wordBreak: 'break-word' }}>
-                      {item.value}
-                    </Typography>
+                      <Typography variant="h5" sx={{ color: 'text.primary', wordBreak: 'break-word' }}>
+                        {item.value}
+                      </Typography>
 
-                    <Button
-                      component="a"
-                      href={item.href}
-                      target={item.href.startsWith('http') ? '_blank' : undefined}
-                      rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
-                      variant="text"
-                      color="secondary"
-                      endIcon={<ArrowOutwardRoundedIcon />}
-                      sx={{ alignSelf: 'flex-start', px: 0 }}
-                    >
-                      {t.contact.openContact}
-                    </Button>
-                  </Stack>
-                </Box>
+                      <Button
+                        component="a"
+                        href={item.href}
+                        target={item.href.startsWith('http') ? '_blank' : undefined}
+                        rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
+                        variant="text"
+                        color="secondary"
+                        endIcon={<ArrowOutwardRoundedIcon />}
+                        sx={{ alignSelf: 'flex-start', px: 0 }}
+                      >
+                        {t.contact.openContact}
+                      </Button>
+                    </Stack>
+                  </Box>
+                </TiltedCard>
               ))}
             </Stack>
           </Box>

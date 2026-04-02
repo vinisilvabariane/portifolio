@@ -1,5 +1,7 @@
 import { Box, Chip, Stack, Typography } from '@mui/material'
 import PageFrame from '../components/layout/PageFrame'
+import SplitText from '../components/split_text/SplitText'
+import TiltedCard from '../components/tilted_card/TiltedCard'
 import { useI18n } from '../i18n/useI18n'
 
 const skills = ['React', 'TypeScript', 'UI Design', 'Motion', 'WebGL', 'Design Systems']
@@ -44,17 +46,33 @@ function About() {
                 {t.about.eyebrow}
               </Typography>
 
-              <Typography
-                variant="h1"
+              <Box
                 sx={{
+                  width: '100%',
                   color: '#f5f7ff',
                   fontSize: { xs: 'clamp(2.6rem, 10vw, 4.4rem)', md: 'clamp(3.4rem, 7vw, 5.4rem)' },
                   textShadow:
                     '0 8px 28px rgba(0, 0, 0, 0.58), 0 2px 10px rgba(0, 0, 0, 0.32)',
+                  '& .split-page-title': {
+                    margin: 0,
+                    color: 'inherit',
+                    fontSize: 'inherit',
+                    fontWeight: 600,
+                    lineHeight: 0.95,
+                    letterSpacing: '-0.06em',
+                  },
                 }}
               >
-                {t.about.title}
-              </Typography>
+                <SplitText
+                  text={t.about.title}
+                  tag="h1"
+                  textAlign="left"
+                  display="block"
+                  splitType="words"
+                  delay={100}
+                  className="split-page-title"
+                />
+              </Box>
 
               <Typography
                 variant="body1"
@@ -71,64 +89,82 @@ function About() {
             </Stack>
 
             <Stack spacing={2.5}>
-              <Box
-                sx={{
-                  p: { xs: 3, md: 4 },
-                  border: '1px solid',
-                  borderColor: 'divider',
-                  borderRadius: 5,
-                  background:
-                    'linear-gradient(180deg, rgba(17, 21, 36, 0.82), rgba(10, 12, 20, 0.62))',
-                  backdropFilter: 'blur(14px)',
-                }}
-              >
-                <Stack spacing={2.25}>
-                  <Typography variant="h5" sx={{ color: 'text.primary' }}>
-                    {t.about.productTitle}
-                  </Typography>
-                  <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8 }}>
-                    {t.about.productDescription}
-                  </Typography>
-                </Stack>
-              </Box>
-
-              <Box
-                sx={{
-                  p: { xs: 3, md: 4 },
-                  border: '1px solid',
-                  borderColor: 'divider',
-                  borderRadius: 5,
-                  background:
-                    'linear-gradient(180deg, rgba(17, 21, 36, 0.82), rgba(10, 12, 20, 0.62))',
-                  backdropFilter: 'blur(14px)',
-                }}
-              >
-                <Stack spacing={2.25}>
-                  <Typography variant="h5" sx={{ color: 'text.primary' }}>
-                    {t.about.stackTitle}
-                  </Typography>
-
-                  <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
-                    {skills.map((skill) => (
-                      <Chip
-                        key={skill}
-                        label={skill}
-                        size="small"
-                        sx={{
-                          color: 'primary.light',
-                          borderColor: 'rgba(111,124,255,0.28)',
-                          backgroundColor: 'rgba(111,124,255,0.08)',
-                        }}
-                        variant="outlined"
-                      />
-                    ))}
+              <TiltedCard minHeight={220} rotateAmplitude={7} scaleOnHover={1.012}>
+                <Box
+                  sx={{
+                    p: { xs: 3, md: 4 },
+                    border: '1px solid',
+                    borderColor: 'divider',
+                    borderRadius: 5,
+                    background:
+                      'linear-gradient(180deg, rgba(17, 21, 36, 0.82), rgba(10, 12, 20, 0.62))',
+                    backdropFilter: 'blur(14px)',
+                    transition: 'border-color 180ms ease, box-shadow 180ms ease',
+                    '@media (hover: hover)': {
+                      '&:hover': {
+                        borderColor: 'rgba(111, 124, 255, 0.42)',
+                        boxShadow: '0 16px 30px rgba(4, 8, 18, 0.24)',
+                      },
+                    },
+                  }}
+                >
+                  <Stack spacing={2.25}>
+                    <Typography variant="h5" sx={{ color: 'text.primary' }}>
+                      {t.about.productTitle}
+                    </Typography>
+                    <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8 }}>
+                      {t.about.productDescription}
+                    </Typography>
                   </Stack>
+                </Box>
+              </TiltedCard>
 
-                  <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8 }}>
-                    {t.about.stackDescription}
-                  </Typography>
-                </Stack>
-              </Box>
+              <TiltedCard minHeight={240} rotateAmplitude={7} scaleOnHover={1.012}>
+                <Box
+                  sx={{
+                    p: { xs: 3, md: 4 },
+                    border: '1px solid',
+                    borderColor: 'divider',
+                    borderRadius: 5,
+                    background:
+                      'linear-gradient(180deg, rgba(17, 21, 36, 0.82), rgba(10, 12, 20, 0.62))',
+                    backdropFilter: 'blur(14px)',
+                    transition: 'border-color 180ms ease, box-shadow 180ms ease',
+                    '@media (hover: hover)': {
+                      '&:hover': {
+                        borderColor: 'rgba(111, 124, 255, 0.42)',
+                        boxShadow: '0 16px 30px rgba(4, 8, 18, 0.24)',
+                      },
+                    },
+                  }}
+                >
+                  <Stack spacing={2.25}>
+                    <Typography variant="h5" sx={{ color: 'text.primary' }}>
+                      {t.about.stackTitle}
+                    </Typography>
+
+                    <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
+                      {skills.map((skill) => (
+                        <Chip
+                          key={skill}
+                          label={skill}
+                          size="small"
+                          sx={{
+                            color: 'primary.light',
+                            borderColor: 'rgba(111,124,255,0.28)',
+                            backgroundColor: 'rgba(111,124,255,0.08)',
+                          }}
+                          variant="outlined"
+                        />
+                      ))}
+                    </Stack>
+
+                    <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8 }}>
+                      {t.about.stackDescription}
+                    </Typography>
+                  </Stack>
+                </Box>
+              </TiltedCard>
             </Stack>
           </Box>
         </Box>

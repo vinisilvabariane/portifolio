@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import { Box, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material'
 import type { Language } from '../../i18n/translations'
 import { useI18n } from '../../i18n/useI18n'
@@ -11,6 +11,33 @@ interface PageFrameProps {
 
 function PageFrame({ children }: PageFrameProps) {
   const { language, setLanguage, t } = useI18n()
+  const [now, setNow] = useState(() => new Date())
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setNow(new Date())
+    }, 1000)
+
+    return () => {
+      window.clearInterval(timer)
+    }
+  }, [])
+
+  const timeFormatter = useMemo(() => {
+    const localeMap: Record<Language, string> = {
+      pt: 'pt-BR',
+      en: 'en-US',
+      es: 'es-ES',
+    }
+
+    return new Intl.DateTimeFormat(localeMap[language], {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+      timeZone: 'America/Sao_Paulo',
+    })
+  }, [language])
 
   function handleLanguageChange(
     _event: React.MouseEvent<HTMLElement>,
@@ -140,6 +167,57 @@ function PageFrame({ children }: PageFrameProps) {
       </Box>
 
       {children}
+
+      <Box
+        aria-label="Current time"
+        sx={{
+          position: 'absolute',
+          right: { xs: 20, md: 28 },
+          bottom: { xs: 20, md: 28 },
+          zIndex: 3,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-end',
+          justifyContent: 'center',
+          minWidth: { xs: 112, md: 132 },
+          px: { xs: 1.5, md: 2 },
+          py: { xs: 1.1, md: 1.35 },
+          border: '1px solid',
+          borderColor: 'divider',
+          borderRadius: 999,
+          color: 'primary.light',
+          backgroundColor: 'rgba(10, 10, 14, 0.42)',
+          backdropFilter: 'blur(12px)',
+          boxShadow: '0 12px 30px rgba(4, 8, 18, 0.24)',
+        }}
+      >
+        <Typography
+          component="span"
+          sx={{
+            color: 'text.secondary',
+            fontFamily: 'var(--mono)',
+            fontSize: 10,
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+          }}
+        >
+          Sao Paulo
+        </Typography>
+
+        <Typography
+          component="span"
+          sx={{
+            color: 'primary.light',
+            fontFamily: 'var(--mono)',
+            fontSize: { xs: 18, md: 22 },
+            fontWeight: 700,
+            letterSpacing: '0.08em',
+            lineHeight: 1.1,
+          }}
+        >
+          {timeFormatter.format(now)}
+        </Typography>
+      </Box>
 
       <SiteNav />
     </Box>

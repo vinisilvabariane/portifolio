@@ -25,16 +25,16 @@ const theme = createTheme({
     borderRadius: 24,
   },
   typography: {
-    fontFamily: "'Segoe UI', sans-serif",
+    fontFamily: "'Ubuntu', sans-serif",
     h1: {
-      fontFamily: "Georgia, 'Times New Roman', serif",
+      fontFamily: "'Ubuntu', sans-serif",
       fontWeight: 600,
       fontSize: 'clamp(3rem, 6vw, 5rem)',
       lineHeight: 0.95,
       letterSpacing: '-0.06em',
     },
     h2: {
-      fontFamily: "Georgia, 'Times New Roman', serif",
+      fontFamily: "'Ubuntu', sans-serif",
       fontWeight: 600,
     },
     button: {
