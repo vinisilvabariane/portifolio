@@ -63,8 +63,8 @@ function PageFrame({ children }: PageFrameProps) {
         component="span"
         sx={{
           position: 'absolute',
-          top: { xs: 20, md: 28 },
           left: { xs: 20, md: 28 },
+          bottom: { xs: 20, md: 28 },
           zIndex: 3,
           px: 1.5,
           py: 0.75,

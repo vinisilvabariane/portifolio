@@ -95,7 +95,7 @@ function About() {
                     p: { xs: 3, md: 4 },
                     border: '1px solid',
                     borderColor: 'divider',
-                    borderRadius: 5,
+                    borderRadius: 2,
                     background:
                       'linear-gradient(180deg, rgba(17, 21, 36, 0.82), rgba(10, 12, 20, 0.62))',
                     backdropFilter: 'blur(14px)',
@@ -125,7 +125,7 @@ function About() {
                     p: { xs: 3, md: 4 },
                     border: '1px solid',
                     borderColor: 'divider',
-                    borderRadius: 5,
+                    borderRadius: 2,
                     background:
                       'linear-gradient(180deg, rgba(17, 21, 36, 0.82), rgba(10, 12, 20, 0.62))',
                     backdropFilter: 'blur(14px)',

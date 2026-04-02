@@ -1,3 +1,4 @@
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded'
 import { Box } from '@mui/material'
 import { NavLink } from 'react-router-dom'
 import { useI18n } from '../../i18n/useI18n'
@@ -23,7 +24,7 @@ function SiteNav() {
       sx={{
         position: 'absolute',
         left: { xs: 20, md: 28 },
-        bottom: { xs: 20, md: 28 },
+        top: { xs: 20, md: 28 },
         zIndex: 3,
         display: 'inline-flex',
         alignItems: 'center',
@@ -51,15 +52,45 @@ function SiteNav() {
     >
       <Box
         sx={{
-          width: 12,
-          height: 12,
-          borderRadius: '50%',
-          backgroundColor: 'primary.main',
-          boxShadow: '0 0 18px rgba(111,124,255,0.75)',
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: 0.85,
           flexShrink: 0,
           ml: 0.5,
         }}
-      />
+      >
+        <Box
+          sx={{
+            width: 12,
+            height: 12,
+            borderRadius: '50%',
+            backgroundColor: 'primary.main',
+            boxShadow: '0 0 18px rgba(111,124,255,0.75)',
+            flexShrink: 0,
+          }}
+        />
+
+        <MenuRoundedIcon
+          sx={{
+            fontSize: 17,
+            color: 'primary.light',
+            opacity: 0.92,
+            filter: 'drop-shadow(0 0 10px rgba(111,124,255,0.45))',
+            transformOrigin: 'center',
+            animation: 'site-nav-icon-float 2.4s ease-in-out infinite',
+            '@keyframes site-nav-icon-float': {
+              '0%, 100%': {
+                transform: 'translateY(0)',
+                opacity: 0.7,
+              },
+              '50%': {
+                transform: 'translateY(-1px)',
+                opacity: 1,
+              },
+            },
+          }}
+        />
+      </Box>
 
       {navItems.map((item) => (
         <Box

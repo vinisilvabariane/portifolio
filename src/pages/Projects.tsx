@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useMemo, useState } from 'react'
 import TiltedCard from '../components/tilted_card/TiltedCard'
 import PageFrame from '../components/layout/PageFrame'
+import SplitText from '../components/split_text/SplitText'
 import { useI18n } from '../i18n/useI18n'
 
 type ProjectItem = {
@@ -112,17 +113,34 @@ function Projects() {
                 {t.projects.eyebrow}
               </Typography>
 
-              <Typography
-                variant="h1"
+              <Box
                 sx={{
+                  width: '100%',
+                  pb: '0.14em',
                   color: '#f5f7ff',
                   fontSize: { xs: 'clamp(2.6rem, 10vw, 4.4rem)', md: 'clamp(3.6rem, 7vw, 5.6rem)' },
                   textShadow:
                     '0 8px 28px rgba(0, 0, 0, 0.58), 0 2px 10px rgba(0, 0, 0, 0.32)',
+                  '& .split-page-title': {
+                    margin: 0,
+                    color: 'inherit',
+                    fontSize: 'inherit',
+                    fontWeight: 600,
+                    lineHeight: 1.04,
+                    letterSpacing: '-0.06em',
+                  },
                 }}
               >
-                {t.projects.title}
-              </Typography>
+                <SplitText
+                  text={t.projects.title}
+                  tag="h1"
+                  textAlign="left"
+                  display="block"
+                  splitType="words"
+                  delay={100}
+                  className="split-page-title"
+                />
+              </Box>
 
               <Typography
                 variant="body1"
@@ -222,7 +240,7 @@ function Projects() {
                           minHeight: { xs: 300, md: 340 },
                           border: '1px solid',
                           borderColor: 'divider',
-                          borderRadius: 5,
+                          borderRadius: 2,
                           background:
                             'linear-gradient(180deg, rgba(17, 21, 36, 0.82), rgba(10, 12, 20, 0.62))',
                           backdropFilter: 'blur(14px)',
