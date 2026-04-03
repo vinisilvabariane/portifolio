@@ -52,7 +52,7 @@ function Home() {
                                 mb: 0,
                                 color: 'rgba(244, 245, 250, 0.82)',
                                 fontFamily: 'var(--mono)',
-                                fontSize: { xs: 12, md: 13 },
+                                fontSize: { xs: 19, md: 20 },
                                 letterSpacing: '0.32em',
                                 textTransform: 'uppercase',
                                 textShadow: '0 2px 10px rgba(0,0,0,0.42)',

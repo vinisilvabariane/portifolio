@@ -27,6 +27,7 @@ type SplitTextProps = {
   rootMargin?: string
   textAlign?: CSSProperties['textAlign']
   display?: CSSProperties['display']
+  overflow?: CSSProperties['overflow']
   tag?: ElementType
   onLetterAnimationComplete?: () => void
 }
@@ -44,6 +45,7 @@ function SplitText({
   rootMargin = '-100px',
   textAlign = 'center',
   display = 'block',
+  overflow = 'hidden',
   tag = 'p',
   onLetterAnimationComplete,
 }: SplitTextProps) {
@@ -187,7 +189,7 @@ function SplitText({
   const renderTag = () => {
     const style = {
       textAlign,
-      overflow: 'hidden',
+      overflow,
       display,
       whiteSpace: 'normal',
       wordWrap: 'break-word',

@@ -1,5 +1,9 @@
 import ArrowOutwardRoundedIcon from '@mui/icons-material/ArrowOutwardRounded'
-import { Box, Button, Stack, Typography } from '@mui/material'
+import EmailRoundedIcon from '@mui/icons-material/EmailRounded'
+import GitHubIcon from '@mui/icons-material/GitHub'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import { alpha } from '@mui/material/styles'
+import { Box, Button, Stack, Typography, useTheme } from '@mui/material'
 import PageFrame from '../components/layout/PageFrame'
 import SplitText from '../components/split_text/SplitText'
 import TiltedCard from '../components/tilted_card/TiltedCard'
@@ -8,23 +12,27 @@ import { useI18n } from '../i18n/useI18n'
 const contactLinks = [
   {
     label: 'Email',
-    value: 'voce@exemplo.com',
-    href: 'mailto:voce@exemplo.com',
+    value: 'vinisilvabariane10@gmail.com',
+    href: 'mailto:vinisilvabariane10@gmail.com',
+    icon: EmailRoundedIcon,
   },
   {
     label: 'LinkedIn',
-    value: 'linkedin.com/in/seu-perfil',
-    href: 'https://linkedin.com',
+    value: 'www.linkedin.com/in/viniciusbariane',
+    href: 'https://www.linkedin.com/in/viniciusbariane/',
+    icon: LinkedInIcon,
   },
   {
     label: 'GitHub',
-    value: 'github.com/seu-usuario',
-    href: 'https://github.com',
+    value: 'github.com/vinisilvabariane',
+    href: 'https://github.com/vinisilvabariane',
+    icon: GitHubIcon,
   },
 ]
 
 function Contact() {
   const { t } = useI18n()
+  const theme = useTheme()
 
   return (
     <PageFrame>
@@ -106,59 +114,81 @@ function Contact() {
             </Stack>
 
             <Stack spacing={2.5}>
-              {contactLinks.map((item) => (
-                <TiltedCard
-                  key={item.label}
-                  minHeight={180}
-                  rotateAmplitude={7}
-                  scaleOnHover={1.012}
-                >
-                  <Box
-                    sx={{
-                      p: { xs: 3, md: 4 },
-                      border: '1px solid',
-                      borderColor: 'divider',
-                      borderRadius: 2,
-                      background:
-                        'linear-gradient(180deg, rgba(17, 21, 36, 0.82), rgba(10, 12, 20, 0.62))',
-                      backdropFilter: 'blur(14px)',
-                      transition: 'border-color 180ms ease, box-shadow 180ms ease',
-                      '@media (hover: hover)': {
-                        '&:hover': {
-                          borderColor: 'rgba(111, 124, 255, 0.42)',
-                          boxShadow: '0 16px 30px rgba(4, 8, 18, 0.24)',
-                        },
-                      },
-                    }}
+              {contactLinks.map((item) => {
+                const Icon = item.icon
+
+                return (
+                  <TiltedCard
+                    key={item.label}
+                    minHeight={180}
+                    rotateAmplitude={7}
+                    scaleOnHover={1.012}
                   >
-                    <Stack spacing={1.5}>
-                      <Typography
-                        variant="overline"
-                        sx={{ color: 'primary.light', letterSpacing: '0.18em' }}
-                      >
-                        {item.label}
-                      </Typography>
+                    <Box
+                      sx={{
+                        p: { xs: 3, md: 4 },
+                        border: '1px solid',
+                        borderColor: 'divider',
+                        borderRadius: 2,
+                        background: `linear-gradient(180deg, ${alpha(theme.palette.background.paper, 0.9)}, ${alpha(theme.palette.background.default, 0.62)})`,
+                        backdropFilter: 'blur(14px)',
+                        transition: 'border-color 180ms ease, box-shadow 180ms ease',
+                        '@media (hover: hover)': {
+                          '&:hover': {
+                            borderColor: alpha(theme.palette.primary.main, 0.42),
+                            boxShadow: `0 16px 30px ${alpha(theme.palette.background.default, 0.24)}`,
+                          },
+                        },
+                      }}
+                    >
+                      <Stack spacing={1.5}>
+                        <Stack direction="row" spacing={1.2} alignItems="center">
+                          <Box
+                            sx={{
+                              width: 40,
+                              height: 40,
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              borderRadius: '50%',
+                              color: 'primary.light',
+                              backgroundColor: alpha(theme.palette.primary.main, 0.12),
+                              border: `1px solid ${alpha(theme.palette.primary.main, 0.2)}`,
+                              flexShrink: 0,
+                            }}
+                          >
+                            <Icon sx={{ fontSize: 20 }} />
+                          </Box>
 
-                      <Typography variant="h5" sx={{ color: 'text.primary', wordBreak: 'break-word' }}>
-                        {item.value}
-                      </Typography>
+                          <Typography
+                            variant="overline"
+                            sx={{ color: 'primary.light', letterSpacing: '0.18em' }}
+                          >
+                            {item.label}
+                          </Typography>
+                        </Stack>
 
-                      <Button
-                        component="a"
-                        href={item.href}
-                        target={item.href.startsWith('http') ? '_blank' : undefined}
-                        rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
-                        variant="text"
-                        color="secondary"
-                        endIcon={<ArrowOutwardRoundedIcon />}
-                        sx={{ alignSelf: 'flex-start', px: 0 }}
-                      >
-                        {t.contact.openContact}
-                      </Button>
-                    </Stack>
-                  </Box>
-                </TiltedCard>
-              ))}
+                        <Typography variant="h5" sx={{ color: 'text.primary', wordBreak: 'break-word' }}>
+                          {item.value}
+                        </Typography>
+
+                        <Button
+                          component="a"
+                          href={item.href}
+                          target={item.href.startsWith('http') ? '_blank' : undefined}
+                          rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
+                          variant="text"
+                          color="secondary"
+                          endIcon={<ArrowOutwardRoundedIcon />}
+                          sx={{ alignSelf: 'flex-start', px: 0 }}
+                        >
+                          {t.contact.openContact}
+                        </Button>
+                      </Stack>
+                    </Box>
+                  </TiltedCard>
+                )
+              })}
             </Stack>
           </Box>
         </Box>

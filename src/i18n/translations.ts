@@ -35,6 +35,9 @@ type TranslationTree = {
     eyebrow: string
     title: string
     description: string
+    filterLabel: string
+    allStacks: string
+    emptyState: string
     viewDetails: string
     items: {
       landingPages: string
@@ -63,22 +66,22 @@ export const translations: Record<Language, TranslationTree> = {
         'Programação fullstack com experiência em desenvolvimento em PHP, JavaScript, React, .NET e outras tecnologias.',
     },
     about: {
-      eyebrow: 'sobre',
-      title: 'Construo interfaces com foco em clareza, ritmo e identidade.',
+      eyebrow: 'sobre mim',
+      title: 'Construo soluções práticas, com ferramentas fullstack.',
       description:
-        'Meu trabalho combina desenvolvimento front-end com direção visual. Gosto de criar experiências que parecem precisas, leves e com personalidade, sem perder legibilidade ou estrutura.',
-      productTitle: 'Como eu penso produto',
+        'Meu trabalho combina desenvolvimento fullstack com soluções práticas. Gosto de criar experiências precisas, leves e com personalidade, sem perder legibilidade ou estrutura.',
+      productTitle: 'Formação acadêmica',
       productDescription:
-        'Interface boa não é só estética. Ela precisa orientar leitura, hierarquia, ação e percepção de valor. Meu foco está em transformar isso em layout, interação e implementação consistente.',
+        'Engenharia de Computação pela Universidade São Francisco. Técnico em Desenvolvimento de Sistemas pelo SENAC. Cursos de especialização em desenvolvimento web pela Udemy e Rocketseat. Certificação em sistemas embarcados pelo Instituto Federal do Ceará (IFCE).',
       stackTitle: 'Stack e repertório',
       stackDescription:
         'Trabalho melhor quando design e código evoluem juntos. Isso significa pensar a interface tanto como experiência quanto como sistema.',
     },
     contact: {
       eyebrow: 'contato',
-      title: 'Vamos conversar sobre produto, interface e novas ideias.',
+      title: 'Vamos conversar! Fale comigo por estes meios.',
       description:
-        'Se você tem um projeto, uma landing page para estruturar ou quer trocar ideia sobre front-end e direção visual, esta é a melhor página para me encontrar.',
+        'Se você tem um projeto, uma landing page para estruturar ou quer trocar ideia sobre programação, entre em contato por um desses canais. Aberto a propostas, colaborações ou só um papo sobre tecnologia e design.',
       openContact: 'Abrir contato',
     },
     projects: {
@@ -86,6 +89,9 @@ export const translations: Record<Language, TranslationTree> = {
       title: 'Página de projetos',
       description:
         'Os projetos ficam organizados em páginas de quatro cards. Conforme você adicionar novos itens, eles entram na próxima página lateral.',
+      filterLabel: 'Filtrar por stack',
+      allStacks: 'Todas',
+      emptyState: 'Nenhum projeto encontrado para essa stack.',
       viewDetails: 'Ver detalhes',
       items: {
         landingPages:
@@ -118,21 +124,21 @@ export const translations: Record<Language, TranslationTree> = {
     },
     about: {
       eyebrow: 'about',
-      title: 'I build interfaces with clarity, rhythm, and identity in mind.',
+      title: 'I build practical solutions with full-stack tools.',
       description:
-        'My work combines front-end development with visual direction. I like creating experiences that feel precise, light, and distinctive without losing legibility or structure.',
-      productTitle: 'How I think about product',
+        'My work combines full-stack development with practical solutions. I like creating experiences that feel precise, light, and distinctive without losing legibility or structure.',
+      productTitle: 'Education',
       productDescription:
-        'A good interface is not only aesthetics. It needs to guide reading, hierarchy, action, and perceived value. My focus is turning that into layout, interaction, and consistent implementation.',
+        'Computer Engineering at Universidade São Francisco. Systems Development Technician at SENAC. Web development specialization courses through Udemy and Rocketseat. Embedded systems certification through Instituto Federal do Ceará (IFCE).',
       stackTitle: 'Stack and range',
       stackDescription:
         'I work best when design and code evolve together. That means treating the interface as both an experience and a system.',
     },
     contact: {
       eyebrow: 'contact',
-      title: 'Let us talk about product, interface, and new ideas.',
+      title: 'Let us talk. Reach me through these channels.',
       description:
-        'If you have a project, need a landing page structured, or want to talk about front-end and visual direction, this is the best page to reach me.',
+        'If you have a project, need a landing page structured, or want to talk about development, this is the best place to reach me. I am open to proposals, collaborations, or just a good conversation about technology and design.',
       openContact: 'Open contact',
     },
     projects: {
@@ -140,6 +146,9 @@ export const translations: Record<Language, TranslationTree> = {
       title: 'Projects page',
       description:
         'Projects are organized in pages of four cards. As you add new items, they move into the next side page.',
+      filterLabel: 'Filter by stack',
+      allStacks: 'All',
+      emptyState: 'No projects found for this stack.',
       viewDetails: 'View details',
       items: {
         landingPages:
@@ -159,7 +168,7 @@ export const translations: Record<Language, TranslationTree> = {
     nav: {
       home: 'Inicio',
       projects: 'Proyectos',
-      about: 'Sobre mi',
+      about: 'Sobre mí',
       contact: 'Contacto',
     },
     languageSwitcherLabel: 'Idioma',
@@ -168,40 +177,43 @@ export const translations: Record<Language, TranslationTree> = {
       title: 'Bienvenido!',
       subtitle: '<Coder>',
       description:
-        'Desarrollo full stack con experiencia en PHP, JavaScript, React, .NET y otras tecnologias relacionadas.',
+        'Desarrollo full stack con experiencia en PHP, JavaScript, React, .NET y otras tecnologías relacionadas.',
     },
     about: {
-      eyebrow: 'sobre mi',
-      title: 'Construyo interfaces con foco en claridad, ritmo e identidad.',
+      eyebrow: 'sobre mí',
+      title: 'Construyo soluciones prácticas con herramientas full stack.',
       description:
-        'Mi trabajo combina desarrollo front-end con direccion visual. Me gusta crear experiencias precisas, ligeras y con personalidad, sin perder legibilidad ni estructura.',
-      productTitle: 'Como pienso el producto',
+        'Mi trabajo combina desarrollo full stack con soluciones prácticas. Me gusta crear experiencias precisas, ligeras y con personalidad, sin perder legibilidad ni estructura.',
+      productTitle: 'Formación académica',
       productDescription:
-        'Una buena interfaz no es solo estetica. Debe orientar la lectura, la jerarquia, la accion y la percepcion de valor. Mi foco es convertir eso en layout, interaccion e implementacion consistente.',
+        'Ingeniería de Computación en la Universidade São Francisco. Técnico en Desarrollo de Sistemas por SENAC. Cursos de especialización en desarrollo web por Udemy y Rocketseat. Certificación en sistemas embebidos por el Instituto Federal do Ceará (IFCE).',
       stackTitle: 'Stack y repertorio',
       stackDescription:
-        'Trabajo mejor cuando diseno y codigo evolucionan juntos. Eso significa pensar la interfaz tanto como experiencia como sistema.',
+        'Trabajo mejor cuando diseño y código evolucionan juntos. Eso significa pensar la interfaz tanto como experiencia como sistema.',
     },
     contact: {
       eyebrow: 'contacto',
-      title: 'Hablemos sobre producto, interfaz e ideas nuevas.',
+      title: 'Hablemos. Contáctame por estos medios.',
       description:
-        'Si tienes un proyecto, una landing page para estructurar o quieres conversar sobre front-end y direccion visual, esta es la mejor pagina para encontrarme.',
+        'Si tienes un proyecto, una landing page para estructurar o quieres conversar sobre desarrollo, ponte en contacto por uno de estos canales. Estoy abierto a propuestas, colaboraciones o simplemente una charla sobre tecnología y diseño.',
       openContact: 'Abrir contacto',
     },
     projects: {
       eyebrow: 'proyectos',
-      title: 'Pagina de proyectos',
+      title: 'Página de proyectos',
       description:
-        'Los proyectos estan organizados en paginas de cuatro tarjetas. A medida que agregas nuevos elementos, pasan a la siguiente pagina lateral.',
+        'Los proyectos están organizados en páginas de cuatro tarjetas. A medida que agregas nuevos elementos, pasan a la siguiente página lateral.',
+      filterLabel: 'Filtrar por stack',
+      allStacks: 'Todas',
+      emptyState: 'No se encontraron proyectos para esta stack.',
       viewDetails: 'Ver detalles',
       items: {
         landingPages:
-          'Coleccion de interfaces enfocadas en conversion, ritmo visual e identidad.',
+          'Colección de interfaces enfocadas en conversión, ritmo visual e identidad.',
         uiExperiments:
           'Exploraciones con shaders, fondos interactivos y composiciones editoriales.',
         designSystems:
-          'Bases reutilizables para componentes, temas y navegacion de producto.',
+          'Bases reutilizables para componentes, temas y navegación de producto.',
         creativePortfoliosA:
           'Estructuras editoriales enfocadas en narrativa visual, impacto y lectura.',
         creativePortfoliosB:

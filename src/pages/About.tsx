@@ -1,13 +1,15 @@
-import { Box, Chip, Stack, Typography } from '@mui/material'
+import { alpha } from '@mui/material/styles'
+import { Box, Chip, Stack, Typography, useTheme } from '@mui/material'
 import PageFrame from '../components/layout/PageFrame'
 import SplitText from '../components/split_text/SplitText'
 import TiltedCard from '../components/tilted_card/TiltedCard'
 import { useI18n } from '../i18n/useI18n'
 
-const skills = ['React', 'TypeScript', 'UI Design', 'Motion', 'WebGL', 'Design Systems']
+const skills = ['JavaScript', 'TypeScript', 'React', 'PHP', 'Laravel', 'C#', '.NET', 'Java','SQL', 'Git']
 
 function About() {
   const { t } = useI18n()
+  const theme = useTheme()
 
   return (
     <PageFrame>
@@ -96,14 +98,13 @@ function About() {
                     border: '1px solid',
                     borderColor: 'divider',
                     borderRadius: 2,
-                    background:
-                      'linear-gradient(180deg, rgba(17, 21, 36, 0.82), rgba(10, 12, 20, 0.62))',
+                    background: `linear-gradient(180deg, ${alpha(theme.palette.background.paper, 0.9)}, ${alpha(theme.palette.background.default, 0.62)})`,
                     backdropFilter: 'blur(14px)',
                     transition: 'border-color 180ms ease, box-shadow 180ms ease',
                     '@media (hover: hover)': {
                       '&:hover': {
-                        borderColor: 'rgba(111, 124, 255, 0.42)',
-                        boxShadow: '0 16px 30px rgba(4, 8, 18, 0.24)',
+                        borderColor: alpha(theme.palette.primary.main, 0.42),
+                        boxShadow: `0 16px 30px ${alpha(theme.palette.background.default, 0.24)}`,
                       },
                     },
                   }}
@@ -126,14 +127,13 @@ function About() {
                     border: '1px solid',
                     borderColor: 'divider',
                     borderRadius: 2,
-                    background:
-                      'linear-gradient(180deg, rgba(17, 21, 36, 0.82), rgba(10, 12, 20, 0.62))',
+                    background: `linear-gradient(180deg, ${alpha(theme.palette.background.paper, 0.9)}, ${alpha(theme.palette.background.default, 0.62)})`,
                     backdropFilter: 'blur(14px)',
                     transition: 'border-color 180ms ease, box-shadow 180ms ease',
                     '@media (hover: hover)': {
                       '&:hover': {
-                        borderColor: 'rgba(111, 124, 255, 0.42)',
-                        boxShadow: '0 16px 30px rgba(4, 8, 18, 0.24)',
+                        borderColor: alpha(theme.palette.primary.main, 0.42),
+                        boxShadow: `0 16px 30px ${alpha(theme.palette.background.default, 0.24)}`,
                       },
                     },
                   }}
@@ -149,11 +149,11 @@ function About() {
                           key={skill}
                           label={skill}
                           size="small"
-                          sx={{
-                            color: 'primary.light',
-                            borderColor: 'rgba(111,124,255,0.28)',
-                            backgroundColor: 'rgba(111,124,255,0.08)',
-                          }}
+                                  sx={{
+                                    color: 'primary.light',
+                                    borderColor: alpha(theme.palette.primary.main, 0.28),
+                                    backgroundColor: alpha(theme.palette.primary.main, 0.08),
+                                  }}
                           variant="outlined"
                         />
                       ))}
