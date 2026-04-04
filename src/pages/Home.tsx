@@ -159,15 +159,6 @@ function Home() {
                                         },
                                     }}
                                 >
-                                    <SplitText
-                                        text={t.home.subtitle}
-                                        tag="h2"
-                                        textAlign="center"
-                                        display="block"
-                                        splitType="words"
-                                        delay={80}
-                                        className="split-home-subtitle"
-                                    />
                                 </Box>
                             </Stack>
                         </Box>

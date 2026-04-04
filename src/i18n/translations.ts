@@ -88,7 +88,7 @@ export const translations: Record<Language, TranslationTree> = {
       eyebrow: 'projetos',
       title: 'Página de projetos',
       description:
-        'Os projetos ficam organizados em páginas de quatro cards. Conforme você adicionar novos itens, eles entram na próxima página lateral.',
+        'Veja os meus projetos e soluções.',
       filterLabel: 'Filtrar por stack',
       allStacks: 'Todas',
       emptyState: 'Nenhum projeto encontrado para essa stack.',
@@ -145,7 +145,7 @@ export const translations: Record<Language, TranslationTree> = {
       eyebrow: 'projects',
       title: 'Projects page',
       description:
-        'Projects are organized in pages of four cards. As you add new items, they move into the next side page.',
+        'See my projects and solutions.',
       filterLabel: 'Filter by stack',
       allStacks: 'All',
       emptyState: 'No projects found for this stack.',
@@ -177,7 +177,7 @@ export const translations: Record<Language, TranslationTree> = {
       title: 'Bienvenido!',
       subtitle: '<Coder>',
       description:
-        'Desarrollo full stack con experiencia en PHP, JavaScript, React, .NET y otras tecnologías relacionadas.',
+        'Vea mis proyectos y soluciones.',
     },
     about: {
       eyebrow: 'sobre mí',

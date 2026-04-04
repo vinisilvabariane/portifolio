@@ -203,13 +203,40 @@ function PageFrame({ children }: PageFrameProps) {
           top: { xs: 24, md: 30 },
           right: { xs: 20, md: 28 },
           zIndex: 3,
+          display: 'inline-flex',
+          alignItems: 'center',
           color: 'text.secondary',
           fontFamily: 'var(--mono)',
           fontSize: { xs: 18, md: 22 },
           letterSpacing: '0.16em',
         }}
       >
-        _VB
+        <Box
+          component="span"
+          sx={{
+            display: 'inline-block',
+            width: '4ch',
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
+            borderRight: '2px solid',
+            borderColor: 'primary.light',
+            color: 'text.secondary',
+            animation:
+              'vb-type 3.2s steps(4, end) infinite, vb-caret 0.9s step-end infinite',
+            '@keyframes vb-type': {
+              '0%': { width: '0ch' },
+              '20%': { width: '4ch' },
+              '72%': { width: '4ch' },
+              '100%': { width: '0ch' },
+            },
+            '@keyframes vb-caret': {
+              '0%, 49%': { borderColor: 'transparent' },
+              '50%, 100%': { borderColor: 'currentColor' },
+            },
+          }}
+        >
+          _VB
+        </Box>
       </Typography>
 
       <Box
