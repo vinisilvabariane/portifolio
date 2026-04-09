@@ -1,13 +1,9 @@
 import { memo, useEffect, useMemo, useState, type ReactNode } from 'react'
-import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded'
 import { alpha } from '@mui/material/styles'
-import { Box, Button, ToggleButton, ToggleButtonGroup, Typography, useTheme } from '@mui/material'
+import { Box, ToggleButton, ToggleButtonGroup, Typography, useTheme } from '@mui/material'
 import type { Language } from '../../i18n/translations'
 import { useI18n } from '../../i18n/useI18n'
-import Galaxy from '../galaxy/Galaxy'
 import Orb from '../orb/Orb'
-import Threads from '../threads/Threads'
-import { useThemeMode } from '../../theme/ThemeModeProvider'
 import SiteNav from './SiteNav'
 
 interface PageFrameProps {
@@ -15,60 +11,14 @@ interface PageFrameProps {
 }
 
 const BackgroundLayer = memo(function BackgroundLayer() {
-  const { themeMode } = useThemeMode()
-
   return (
     <Box className="home-page__background" aria-hidden="true">
-      {themeMode === 'threads' ? (
-        <Box
-          sx={{
-            width: '100%',
-            height: '100%',
-            background:
-              'radial-gradient(circle at top, rgba(244, 140, 69, 0.16), transparent 38%), linear-gradient(180deg, #2a150d 0%, #160d08 100%)',
-          }}
-        >
-          <Threads
-            color={[0.956, 0.549, 0.271]}
-            amplitude={1.2}
-            distance={0.18}
-            enableMouseInteraction
-          />
-        </Box>
-      ) : themeMode === 'galaxy' ? (
-        <Box
-          sx={{
-            width: '100%',
-            height: '100%',
-            background:
-              'radial-gradient(circle at top, rgba(88, 240, 178, 0.14), transparent 34%), radial-gradient(circle at 20% 10%, rgba(125, 225, 255, 0.08), transparent 22%), linear-gradient(180deg, #0b1d19 0%, #05110f 100%)',
-          }}
-        >
-          <Galaxy
-            hueShift={136}
-            density={1.05}
-            glowIntensity={0.34}
-            saturation={0.92}
-            mouseRepulsion
-            mouseInteraction
-            starSpeed={0.42}
-            speed={0.85}
-            twinkleIntensity={0.24}
-            rotationSpeed={0.06}
-            repulsionStrength={1.6}
-            tintColor={[0.345, 0.941, 0.698]}
-            tintStrength={0.8}
-            transparent
-          />
-        </Box>
-      ) : (
-        <Orb
-          hue={22}
-          hoverIntensity={0.5}
-          rotateOnHover
-          backgroundColor="#090d18"
-        />
-      )}
+      <Orb
+        hue={22}
+        hoverIntensity={0.5}
+        rotateOnHover
+        backgroundColor="#090d18"
+      />
     </Box>
   )
 })
@@ -152,13 +102,6 @@ const ClockPanel = memo(function ClockPanel() {
 function PageFrame({ children }: PageFrameProps) {
   const { language, setLanguage, t } = useI18n()
   const theme = useTheme()
-  const { themeMode, toggleThemeMode } = useThemeMode()
-  const nextThemeLabel =
-    themeMode === 'orb'
-      ? 'Threads'
-      : themeMode === 'threads'
-        ? 'Galaxy'
-        : 'Orb'
 
   function handleLanguageChange(
     _event: React.MouseEvent<HTMLElement>,
@@ -321,33 +264,6 @@ function PageFrame({ children }: PageFrameProps) {
           gap: 1,
         }}
       >
-        <Button
-          onClick={toggleThemeMode}
-          startIcon={<AutoAwesomeRoundedIcon sx={{ fontSize: 16 }} />}
-          sx={{
-            alignSelf: 'flex-end',
-            px: 1.35,
-            py: 0.7,
-            minHeight: 0,
-            border: '1px solid',
-            borderColor: 'divider',
-            borderRadius: 999,
-            color: 'primary.light',
-            fontFamily: 'var(--mono)',
-            fontSize: 11,
-            letterSpacing: '0.12em',
-            textTransform: 'uppercase',
-            backgroundColor: alpha(theme.palette.background.default, 0.38),
-            backdropFilter: 'blur(12px)',
-            '&:hover': {
-              borderColor: alpha(theme.palette.primary.main, 0.42),
-              backgroundColor: alpha(theme.palette.background.default, 0.72),
-            },
-          }}
-        >
-          {nextThemeLabel}
-        </Button>
-
         <ClockPanel />
       </Box>
 

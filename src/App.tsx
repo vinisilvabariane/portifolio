@@ -3,6 +3,7 @@ import { Box } from '@mui/material'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import './App.css'
 import About from './pages/About'
+import CustomCursor from './components/cursor/CustomCursor'
 import Contact from './pages/Contact'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
@@ -30,6 +31,7 @@ function App() {
 
   return (
     <Box sx={{ minHeight: '100svh' }}>
+      <CustomCursor />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route
