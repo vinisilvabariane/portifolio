@@ -45,6 +45,11 @@ type TranslationTree = {
       designSystems: string
       creativePortfoliosA: string
       creativePortfoliosB: string
+      pingMonitor: string
+      bmiCalculator: string
+      todoApi: string
+      vehicleAgencyApp: string
+      sentimentAnalyzer: string
     }
   }
 }
@@ -95,15 +100,25 @@ export const translations: Record<Language, TranslationTree> = {
       viewDetails: 'Ver detalhes',
       items: {
         landingPages:
-          'Coleção de interfaces focadas em conversão, ritmo visual e identidade.',
+          'App mobile em React Native para leitura de QR Codes e organização de estoque.',
         uiExperiments:
-          'Explorações com shaders, backgrounds interativos e composições editoriais.',
+          'Projeto de iniciação científica com IA para traçar trilhas de estudo a partir de questionário e dataset.',
         designSystems:
-          'Bases reutilizáveis para componentes, temas e navegação de produto.',
+          'Sistema de monitoramento de incêndio com IA em Python, sensores Arduino e painel web em PHP.',
         creativePortfoliosA:
-          'Estruturas editoriais com foco em narrativa visual, impacto e leitura.',
+          'Aplicação em PHP e JavaScript para gerenciar diferentes bases de usuários em um único app.',
         creativePortfoliosB:
-          'Estruturas editoriais com foco em narrativa visual, impacto e leitura.',
+          'Aplicação web em PHP para login, catálogo e gerenciamento de vídeos com MySQL e MQTT.',
+        pingMonitor:
+          'Aplicativo desktop em Python para monitorar hosts por ping com alertas por e-mail.',
+        bmiCalculator:
+          'Aplicação em Java para cálculo de IMC com resultado instantâneo e interpretação da faixa.',
+        todoApi:
+          'API REST em Java com Spring Boot para tarefas diárias, autenticação por UUID e validações.',
+        vehicleAgencyApp:
+          'Aplicação console em C# para gerenciamento de uma agência de veículos.',
+        sentimentAnalyzer:
+          'Protótipo de IA em Python para análise de sentimentos em português.',
       },
     },
   },
@@ -152,15 +167,25 @@ export const translations: Record<Language, TranslationTree> = {
       viewDetails: 'View details',
       items: {
         landingPages:
-          'A collection of interfaces focused on conversion, visual rhythm, and identity.',
+          'React Native mobile app for QR code scanning and stock organization.',
         uiExperiments:
-          'Explorations with shaders, interactive backgrounds, and editorial compositions.',
+          'Scientific initiation project using AI to generate study paths from a questionnaire and dataset.',
         designSystems:
-          'Reusable foundations for components, themes, and product navigation.',
+          'Fire monitoring system with Python AI, Arduino sensors, and a PHP web dashboard.',
         creativePortfoliosA:
-          'Editorial structures focused on visual storytelling, impact, and readability.',
+          'PHP and JavaScript application to manage different user databases in a single app.',
         creativePortfoliosB:
-          'Editorial structures focused on visual storytelling, impact, and readability.',
+          'PHP web application for login, video catalog, and management with MySQL and MQTT.',
+        pingMonitor:
+          'Python desktop app for ping-based host monitoring with email alerts.',
+        bmiCalculator:
+          'Java application for BMI calculation with instant results and range interpretation.',
+        todoApi:
+          'Java Spring Boot REST API for daily tasks with UUID authentication and validations.',
+        vehicleAgencyApp:
+          'C# console application for vehicle agency management.',
+        sentimentAnalyzer:
+          'Python AI prototype for sentiment analysis in Portuguese.',
       },
     },
   },
@@ -209,15 +234,25 @@ export const translations: Record<Language, TranslationTree> = {
       viewDetails: 'Ver detalles',
       items: {
         landingPages:
-          'Colección de interfaces enfocadas en conversión, ritmo visual e identidad.',
+          'App móvil en React Native para lectura de códigos QR y organización de stock.',
         uiExperiments:
-          'Exploraciones con shaders, fondos interactivos y composiciones editoriales.',
+          'Proyecto de iniciación científica con IA para generar rutas de estudio a partir de cuestionario y dataset.',
         designSystems:
-          'Bases reutilizables para componentes, temas y navegación de producto.',
+          'Sistema de monitoreo de incendios con IA en Python, sensores Arduino y panel web en PHP.',
         creativePortfoliosA:
-          'Estructuras editoriales enfocadas en narrativa visual, impacto y lectura.',
+          'Aplicación en PHP y JavaScript para gestionar diferentes bases de usuarios en una sola app.',
         creativePortfoliosB:
-          'Estructuras editoriales enfocadas en narrativa visual, impacto y lectura.',
+          'Aplicación web en PHP para login, catálogo y gestión de videos con MySQL y MQTT.',
+        pingMonitor:
+          'Aplicación de escritorio en Python para monitorear hosts por ping con alertas por correo.',
+        bmiCalculator:
+          'Aplicación en Java para cálculo de IMC con resultado instantáneo e interpretación del rango.',
+        todoApi:
+          'API REST en Java con Spring Boot para tareas diarias, autenticación por UUID y validaciones.',
+        vehicleAgencyApp:
+          'Aplicación de consola en C# para gestión de una agencia de vehículos.',
+        sentimentAnalyzer:
+          'Prototipo de IA en Python para análisis de sentimientos en portugués.',
       },
     },
   },

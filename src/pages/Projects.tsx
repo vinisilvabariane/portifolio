@@ -27,6 +27,13 @@ type ProjectItem = {
   title: string
   description: string
   tags: string[]
+  repoUrl?: string
+}
+
+type ProjectImage = {
+  src: string
+  alt: string
+  caption?: string
 }
 
 type ProjectDetailContent = {
@@ -37,38 +44,74 @@ type ProjectDetailContent = {
   scope: string
   highlightsLabel: string
   highlights: string[]
+  images?: ProjectImage[]
 }
 
 const projects: ProjectItem[] = [
   {
-    title: 'Landing Pages',
+    title: 'App Mobile Estoque',
     description: 'landingPages',
-    tags: ['PHP', 'JavaScript', 'React'],
+    tags: ['React Native', 'JavaScript'],
+    repoUrl: 'https://github.com/vinisilvabariane/app_mobile_estoque.git',
   },
   {
-    title: 'UI Experiments',
+    title: 'Map My Path',
     description: 'uiExperiments',
-    tags: ['JavaScript', 'React'],
+    tags: ['PHP', 'Python', 'JavaScript'],
+    repoUrl: 'https://github.com/vinisilvabariane/app_mmp.git',
   },
   {
-    title: 'Design Systems',
+    title: 'Firewatch',
     description: 'designSystems',
-    tags: ['React', 'JavaScript'],
+    tags: ['PHP', 'Python', 'JavaScript'],
+    repoUrl: 'https://github.com/vinisilvabariane/app_firewatch.git',
   },
   {
-    title: 'Creative Portfolios',
+    title: 'Lockpick',
     description: 'creativePortfoliosA',
-    tags: ['PHP', 'Java'],
+    tags: ['PHP', 'JavaScript'],
+    repoUrl: 'https://github.com/vinisilvabariane/app_lockpick.git',
   },
   {
-    title: 'Enterprise Dashboard',
+    title: 'Bitstream',
     description: 'creativePortfoliosB',
-    tags: ['Java', 'JavaScript', 'C#'],
+    tags: ['PHP', 'JavaScript'],
+    repoUrl: 'https://github.com/vinisilvabariane/app_bitstream.git',
+  },
+  {
+    title: 'Ping Monitor',
+    description: 'pingMonitor',
+    tags: ['Python'],
+    repoUrl: 'https://github.com/vinisilvabariane/app_ping_monitor.git',
+  },
+  {
+    title: 'Calculadora IMC',
+    description: 'bmiCalculator',
+    tags: ['Java'],
+    repoUrl: 'https://github.com/vinisilvabariane/app_calculadora_imc.git',
+  },
+  {
+    title: 'To-Do API',
+    description: 'todoApi',
+    tags: ['Java'],
+    repoUrl: 'https://github.com/vinisilvabariane/api_todolist_java_spring.git',
+  },
+  {
+    title: 'Agência Veículos Premium',
+    description: 'vehicleAgencyApp',
+    tags: ['C#'],
+    repoUrl: 'https://github.com/vinisilvabariane/app-agencia-veiculos-premium.git',
+  },
+  {
+    title: 'Analisador de Sentimentos',
+    description: 'sentimentAnalyzer',
+    tags: ['Python'],
+    repoUrl: 'https://github.com/vinisilvabariane/IA_analisador_de_sentimentos.git',
   },
 ]
 
 const PROJECTS_PER_PAGE = 4
-const stackFilters = ['PHP', 'Java', 'React', 'JavaScript', 'C#'] as const
+const stackFilters = ['PHP', 'Python', 'Java', 'React', 'React Native', 'JavaScript', 'C#'] as const
 
 const projectDetails: Record<Language, Record<ProjectItem['description'], ProjectDetailContent>> = {
   pt: {
@@ -135,6 +178,71 @@ const projectDetails: Record<Language, Record<ProjectItem['description'], Projec
         'Layout orientado a produtividade e contexto.',
         'Componentes consistentes para dados complexos.',
         'Priorização de clareza em cenários densos.',
+      ],
+    },
+    pingMonitor: {
+      heading: 'Aplicativo desktop em Python para monitorar hosts por ICMP com alertas por e-mail.',
+      goalLabel: 'Objetivo',
+      goal: 'Acompanhar disponibilidade de hosts em uma interface simples e notificar quando houver transição para estado offline.',
+      scopeLabel: 'Escopo',
+      scope: 'Aplicação em Python com Tkinter, monitoramento por ping com fallback para comando do sistema, configuração por variáveis de ambiente e envio opcional de alertas por e-mail.',
+      highlightsLabel: 'Destaques',
+      highlights: [
+        'Monitoramento ICMP com fallback quando `ping3` não está disponível.',
+        'Interface desktop modular com atualização thread-safe.',
+        'Alertas enviados apenas na transição para offline.',
+      ],
+    },
+    bmiCalculator: {
+      heading: 'Aplicação em Java para cálculo de IMC com interpretação do resultado.',
+      goalLabel: 'Objetivo',
+      goal: 'Permitir o cálculo rápido do índice de massa corporal com retorno imediato e orientação básica sobre a faixa do resultado.',
+      scopeLabel: 'Escopo',
+      scope: 'Aplicativo simples com interface amigável para entrada de altura e peso, cálculo automático do IMC e exibição da classificação correspondente.',
+      highlightsLabel: 'Destaques',
+      highlights: [
+        'Cálculo instantâneo de IMC a partir de peso e altura.',
+        'Leitura simples com classificação do resultado.',
+        'Projeto direto, leve e fácil de usar como utilitário.',
+      ],
+    },
+    todoApi: {
+      heading: 'API REST em Java com Spring Boot para gerenciamento de tarefas diárias.',
+      goalLabel: 'Objetivo',
+      goal: 'Organizar tarefas com autenticação simples por UUID, validações de dados e regras para garantir que apenas o proprietário possa alterar seus itens.',
+      scopeLabel: 'Escopo',
+      scope: 'Backend com Spring Boot, Spring Web, JPA, validação, H2 em memória e filtro customizado de autorização para proteger rotas de tarefas.',
+      highlightsLabel: 'Destaques',
+      highlights: [
+        'CRUD de tarefas com autenticação baseada em UUID.',
+        'Validação de datas e restrição de edição ao dono da tarefa.',
+        'Tratamento padronizado de erros e banco H2 para desenvolvimento.',
+      ],
+    },
+    vehicleAgencyApp: {
+      heading: 'Aplicação console em C# para gerenciamento de uma agência de veículos.',
+      goalLabel: 'Objetivo',
+      goal: 'Exercitar conceitos básicos da linguagem C# em um projeto prático voltado à organização de operações de uma agência de carros.',
+      scopeLabel: 'Escopo',
+      scope: 'Aplicativo de terminal para cadastro e gerenciamento de informações da agência, com foco em estruturação lógica e treinamento de fundamentos.',
+      highlightsLabel: 'Destaques',
+      highlights: [
+        'Projeto de treino focado em fundamentos de C#.',
+        'Modelagem simples para rotina de uma agência de veículos.',
+        'Estrutura voltada para prática de lógica e organização de código.',
+      ],
+    },
+    sentimentAnalyzer: {
+      heading: 'Protótipo de IA para análise de sentimentos em textos em português.',
+      goalLabel: 'Objetivo',
+      goal: 'Classificar frases como positivas ou negativas com base em um modelo treinado em avaliações de e-commerce brasileiro.',
+      scopeLabel: 'Escopo',
+      scope: 'Pipeline de PLN com preparação de dados, treinamento do modelo e execução via linha de comando, usando técnicas clássicas de classificação de texto.',
+      highlightsLabel: 'Destaques',
+      highlights: [
+        'Classificação binária de sentimento em português.',
+        'Uso de Pandas, NLTK, Scikit-learn e Joblib.',
+        'Projeto organizado em etapas de dados, treino e predição.',
       ],
     },
   },
@@ -204,6 +312,71 @@ const projectDetails: Record<Language, Record<ProjectItem['description'], Projec
         'Clarity prioritized for complex scenarios.',
       ],
     },
+    pingMonitor: {
+      heading: 'Python desktop application for ICMP host monitoring with email alerts.',
+      goalLabel: 'Goal',
+      goal: 'Track host availability in a simple interface and notify when a monitored target transitions to offline.',
+      scopeLabel: 'Scope',
+      scope: 'Python application with Tkinter, ping monitoring with system-command fallback, environment-based configuration, and optional email alerts.',
+      highlightsLabel: 'Highlights',
+      highlights: [
+        'ICMP monitoring with fallback when `ping3` is unavailable.',
+        'Modular desktop UI with thread-safe updates.',
+        'Alerts sent only on transition to offline.',
+      ],
+    },
+    bmiCalculator: {
+      heading: 'Java application for BMI calculation with result interpretation.',
+      goalLabel: 'Goal',
+      goal: 'Provide a quick body mass index calculation with immediate feedback and a basic interpretation of the result range.',
+      scopeLabel: 'Scope',
+      scope: 'Simple application with a friendly interface for height and weight input, automatic BMI calculation, and display of the corresponding classification.',
+      highlightsLabel: 'Highlights',
+      highlights: [
+        'Instant BMI calculation from weight and height.',
+        'Straightforward result reading with classification.',
+        'Direct, lightweight utility-style project.',
+      ],
+    },
+    todoApi: {
+      heading: 'Java Spring Boot REST API for daily task management.',
+      goalLabel: 'Goal',
+      goal: 'Organize tasks with simple UUID-based authentication, data validation, and rules ensuring that only the owner can modify their items.',
+      scopeLabel: 'Scope',
+      scope: 'Backend built with Spring Boot, Spring Web, JPA, validation, in-memory H2, and a custom authorization filter to protect task routes.',
+      highlightsLabel: 'Highlights',
+      highlights: [
+        'Task CRUD with UUID-based authentication.',
+        'Date validation and owner-only task updates.',
+        'Standardized error handling and H2 database for development.',
+      ],
+    },
+    vehicleAgencyApp: {
+      heading: 'C# console application for vehicle agency management.',
+      goalLabel: 'Goal',
+      goal: 'Practice core C# language concepts through a practical project centered on organizing vehicle agency operations.',
+      scopeLabel: 'Scope',
+      scope: 'Terminal application for agency information management, focused on logical structure and training fundamental programming concepts.',
+      highlightsLabel: 'Highlights',
+      highlights: [
+        'Training project focused on core C# fundamentals.',
+        'Simple modeling for a vehicle agency workflow.',
+        'Structure designed for logic practice and code organization.',
+      ],
+    },
+    sentimentAnalyzer: {
+      heading: 'AI prototype for sentiment analysis in Portuguese text.',
+      goalLabel: 'Goal',
+      goal: 'Classify phrases as positive or negative based on a model trained on Brazilian e-commerce reviews.',
+      scopeLabel: 'Scope',
+      scope: 'NLP pipeline with data preparation, model training, and command-line execution using classic text classification techniques.',
+      highlightsLabel: 'Highlights',
+      highlights: [
+        'Binary sentiment classification for Portuguese text.',
+        'Built with Pandas, NLTK, Scikit-learn, and Joblib.',
+        'Project organized around data, training, and prediction steps.',
+      ],
+    },
   },
   es: {
     landingPages: {
@@ -271,6 +444,71 @@ const projectDetails: Record<Language, Record<ProjectItem['description'], Projec
         'Claridad priorizada en escenarios densos.',
       ],
     },
+    pingMonitor: {
+      heading: 'Aplicación de escritorio en Python para monitorear hosts por ICMP con alertas por correo.',
+      goalLabel: 'Objetivo',
+      goal: 'Acompañar la disponibilidad de hosts en una interfaz simple y notificar cuando un objetivo monitoreado pasa a offline.',
+      scopeLabel: 'Alcance',
+      scope: 'Aplicación en Python con Tkinter, monitoreo por ping con fallback al comando del sistema, configuración por variables de entorno y alertas opcionales por correo.',
+      highlightsLabel: 'Puntos clave',
+      highlights: [
+        'Monitoreo ICMP con fallback cuando `ping3` no está disponible.',
+        'Interfaz de escritorio modular con actualización thread-safe.',
+        'Alertas enviadas solo en la transición a offline.',
+      ],
+    },
+    bmiCalculator: {
+      heading: 'Aplicación en Java para cálculo de IMC con interpretación del resultado.',
+      goalLabel: 'Objetivo',
+      goal: 'Permitir el cálculo rápido del índice de masa corporal con retorno inmediato y orientación básica sobre el rango del resultado.',
+      scopeLabel: 'Alcance',
+      scope: 'Aplicación simple con interfaz amigable para ingresar altura y peso, cálculo automático del IMC y exhibición de la clasificación correspondiente.',
+      highlightsLabel: 'Puntos clave',
+      highlights: [
+        'Cálculo instantáneo de IMC a partir de peso y altura.',
+        'Lectura simple con clasificación del resultado.',
+        'Proyecto directo, liviano y fácil de usar como utilidad.',
+      ],
+    },
+    todoApi: {
+      heading: 'API REST en Java con Spring Boot para gestión de tareas diarias.',
+      goalLabel: 'Objetivo',
+      goal: 'Organizar tareas con autenticación simple por UUID, validaciones de datos y reglas para garantizar que solo el propietario pueda modificar sus elementos.',
+      scopeLabel: 'Alcance',
+      scope: 'Backend con Spring Boot, Spring Web, JPA, validación, H2 en memoria y filtro customizado de autorización para proteger rutas de tareas.',
+      highlightsLabel: 'Puntos clave',
+      highlights: [
+        'CRUD de tareas con autenticación basada en UUID.',
+        'Validación de fechas y edición restringida al dueño de la tarea.',
+        'Manejo estandarizado de errores y base H2 para desarrollo.',
+      ],
+    },
+    vehicleAgencyApp: {
+      heading: 'Aplicación de consola en C# para gestión de una agencia de vehículos.',
+      goalLabel: 'Objetivo',
+      goal: 'Practicar conceptos básicos del lenguaje C# en un proyecto práctico orientado a organizar operaciones de una agencia de autos.',
+      scopeLabel: 'Alcance',
+      scope: 'Aplicación de terminal para gestión de información de la agencia, con foco en estructura lógica y entrenamiento de fundamentos de programación.',
+      highlightsLabel: 'Puntos clave',
+      highlights: [
+        'Proyecto de práctica enfocado en fundamentos de C#.',
+        'Modelado simple para flujo de una agencia de vehículos.',
+        'Estructura orientada a lógica y organización del código.',
+      ],
+    },
+    sentimentAnalyzer: {
+      heading: 'Prototipo de IA para análisis de sentimientos en textos en portugués.',
+      goalLabel: 'Objetivo',
+      goal: 'Clasificar frases como positivas o negativas con base en un modelo entrenado con reseñas de e-commerce brasileño.',
+      scopeLabel: 'Alcance',
+      scope: 'Pipeline de PLN con preparación de datos, entrenamiento del modelo y ejecución por línea de comando usando técnicas clásicas de clasificación de texto.',
+      highlightsLabel: 'Puntos clave',
+      highlights: [
+        'Clasificación binaria de sentimiento en portugués.',
+        'Uso de Pandas, NLTK, Scikit-learn y Joblib.',
+        'Proyecto organizado en etapas de datos, entrenamiento y predicción.',
+      ],
+    },
   },
 }
 
@@ -289,6 +527,7 @@ function Projects() {
   const theme = useTheme()
   const [selectedStack, setSelectedStack] = useState<string>('all')
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null)
+  const [activeImageIndex, setActiveImageIndex] = useState(0)
   const filteredProjects = useMemo(() => {
     if (selectedStack === 'all') return projects
 
@@ -306,6 +545,10 @@ function Projects() {
   useEffect(() => {
     setActivePage(0)
   }, [selectedStack])
+
+  useEffect(() => {
+    setActiveImageIndex(0)
+  }, [selectedProject])
 
   function goPrev() {
     if (canGoPrev) setActivePage((current) => current - 1)
@@ -325,14 +568,47 @@ function Projects() {
   }
 
   const modalLabels = {
-    pt: { stack: 'Stack', close: 'Fechar' },
-    en: { stack: 'Stack', close: 'Close' },
-    es: { stack: 'Stack', close: 'Cerrar' },
-  } satisfies Record<Language, { stack: string; close: string }>
+    pt: {
+      stack: 'Stack',
+      close: 'Fechar',
+      gallery: 'Galeria',
+      emptyGallery: 'Adicione imagens em `projectDetails.images` para exibir a galeria deste projeto.',
+      repository: 'Repositório',
+      openRepository: 'Abrir repositório',
+    },
+    en: {
+      stack: 'Stack',
+      close: 'Close',
+      gallery: 'Gallery',
+      emptyGallery: 'Add images in `projectDetails.images` to display this project gallery.',
+      repository: 'Repository',
+      openRepository: 'Open repository',
+    },
+    es: {
+      stack: 'Stack',
+      close: 'Cerrar',
+      gallery: 'Galería',
+      emptyGallery: 'Agrega imágenes en `projectDetails.images` para mostrar la galería de este proyecto.',
+      repository: 'Repositorio',
+      openRepository: 'Abrir repositorio',
+    },
+  } satisfies Record<
+    Language,
+    {
+      stack: string
+      close: string
+      gallery: string
+      emptyGallery: string
+      repository: string
+      openRepository: string
+    }
+  >
 
   const selectedProjectDetail = selectedProject
     ? projectDetails[language][selectedProject.description]
     : null
+  const selectedProjectImages = selectedProjectDetail?.images ?? []
+  const activeImage = selectedProjectImages[activeImageIndex] ?? null
 
   return (
     <PageFrame>
@@ -678,7 +954,7 @@ function Projects() {
         open={Boolean(selectedProject && selectedProjectDetail)}
         onClose={() => setSelectedProject(null)}
         fullWidth
-        maxWidth="md"
+        maxWidth="lg"
         PaperProps={{
           sx: {
             border: '1px solid',
@@ -722,6 +998,121 @@ function Projects() {
 
             <DialogContent sx={{ pt: 1 }}>
               <Stack spacing={3}>
+                <Stack spacing={1.5}>
+                  <Typography
+                    variant="overline"
+                    sx={{ color: 'primary.light', letterSpacing: '0.18em' }}
+                  >
+                    {modalLabels[language].gallery}
+                  </Typography>
+
+                  {activeImage ? (
+                    <Stack spacing={1.5}>
+                      <Box
+                        sx={{
+                          position: 'relative',
+                          overflow: 'hidden',
+                          minHeight: { xs: 240, md: 360 },
+                          borderRadius: 3,
+                          border: '1px solid',
+                          borderColor: alpha(theme.palette.primary.main, 0.22),
+                          backgroundColor: alpha(theme.palette.background.default, 0.42),
+                          boxShadow: `0 24px 48px ${alpha(theme.palette.background.default, 0.32)}`,
+                        }}
+                      >
+                        <Box
+                          component="img"
+                          src={activeImage.src}
+                          alt={activeImage.alt}
+                          sx={{
+                            display: 'block',
+                            width: '100%',
+                            height: { xs: 240, md: 360 },
+                            objectFit: 'cover',
+                          }}
+                        />
+                      </Box>
+
+                      {activeImage.caption ? (
+                        <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
+                          {activeImage.caption}
+                        </Typography>
+                      ) : null}
+
+                      {selectedProjectImages.length > 1 ? (
+                        <Box
+                          sx={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(96px, 1fr))',
+                            gap: 1,
+                          }}
+                        >
+                          {selectedProjectImages.map((image, index) => {
+                            const isActive = index === activeImageIndex
+
+                            return (
+                              <Box
+                                key={`${image.src}-${index}`}
+                                component="button"
+                                type="button"
+                                onClick={() => setActiveImageIndex(index)}
+                                sx={{
+                                  p: 0,
+                                  border: '1px solid',
+                                  borderColor: isActive
+                                    ? alpha(theme.palette.primary.light, 0.9)
+                                    : alpha(theme.palette.primary.main, 0.18),
+                                  borderRadius: 2,
+                                  overflow: 'hidden',
+                                  cursor: 'pointer',
+                                  background: 'transparent',
+                                  opacity: isActive ? 1 : 0.72,
+                                  transform: isActive ? 'translateY(-2px)' : 'none',
+                                  transition: '180ms ease',
+                                  boxShadow: isActive
+                                    ? `0 12px 24px ${alpha(theme.palette.background.default, 0.28)}`
+                                    : 'none',
+                                }}
+                              >
+                                <Box
+                                  component="img"
+                                  src={image.src}
+                                  alt={image.alt}
+                                  sx={{
+                                    display: 'block',
+                                    width: '100%',
+                                    height: 82,
+                                    objectFit: 'cover',
+                                  }}
+                                />
+                              </Box>
+                            )
+                          })}
+                        </Box>
+                      ) : null}
+                    </Stack>
+                  ) : (
+                    <Box
+                      sx={{
+                        minHeight: { xs: 180, md: 240 },
+                        borderRadius: 3,
+                        border: '1px dashed',
+                        borderColor: alpha(theme.palette.primary.main, 0.28),
+                        background: `linear-gradient(180deg, ${alpha(theme.palette.background.paper, 0.72)}, ${alpha(theme.palette.background.default, 0.46)})`,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        px: 3,
+                        textAlign: 'center',
+                      }}
+                    >
+                      <Typography variant="body1" sx={{ color: 'text.secondary', maxWidth: 360 }}>
+                        {modalLabels[language].emptyGallery}
+                      </Typography>
+                    </Box>
+                  )}
+                </Stack>
+
                 <Typography variant="body1" sx={{ color: 'text.primary', lineHeight: 1.8 }}>
                   {selectedProjectDetail.heading}
                 </Typography>
@@ -743,6 +1134,30 @@ function Projects() {
                 </Stack>
 
                 <Stack spacing={2.2}>
+                  {selectedProject.repoUrl ? (
+                    <Box>
+                      <Typography
+                        variant="overline"
+                        sx={{ color: 'primary.light', letterSpacing: '0.18em' }}
+                      >
+                        {modalLabels[language].repository}
+                      </Typography>
+                      <Box sx={{ pt: 0.75 }}>
+                        <Button
+                          component="a"
+                          href={selectedProject.repoUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          variant="outlined"
+                          color="secondary"
+                          endIcon={<LaunchRoundedIcon />}
+                        >
+                          {modalLabels[language].openRepository}
+                        </Button>
+                      </Box>
+                    </Box>
+                  ) : null}
+
                   <Box>
                     <Typography
                       variant="overline"

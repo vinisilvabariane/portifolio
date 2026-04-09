@@ -90,6 +90,7 @@ Os pontos principais para adaptar o portfolio sao:
 - `src/pages/Contact.tsx`: email, LinkedIn e GitHub.
 - `src/components/layout/PageFrame.tsx`: assinatura visual fixa da interface.
 - `src/theme.ts`: cores, tipografia e tokens visuais.
+- `public/projects/`: imagens usadas na galeria dos modais de projeto.
 
 ## Observacoes
 

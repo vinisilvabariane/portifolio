@@ -22,7 +22,7 @@ const INITIAL_ROTATION: RotationState = {
 function TiltedCard({
   children,
   minHeight,
-  rotateAmplitude = 10,
+  rotateAmplitude = 15,
   scaleOnHover = 1.02,
 }: TiltedCardProps) {
   const [rotation, setRotation] = useState<RotationState>(INITIAL_ROTATION)
