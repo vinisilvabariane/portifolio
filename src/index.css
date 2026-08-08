@@ -1,115 +1,133 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400;1,6..96,500&display=swap');
 
+/*
+  CARTA — a portfolio drawn as a passage plan.
+
+  The palette follows chart convention rather than taste: pale water, buff
+  paper for anything that stands above it, navy ink for everything drawn, and
+  magenta reserved — as on a real chart — for lights and anything that
+  transmits. Nothing else gets to be magenta.
+*/
 :root {
-  --font-primary: 'Ubuntu', sans-serif;
-  --mono: 'Ubuntu', sans-serif;
+  /* Water. The live tint is painted on canvas; these are the anchors. */
+  --shoal: #f4fbfd;
+  --sea-pale: #dbf0f9;
+  --sea: #bee2f3;
+  --sea-mid: #82bede;
+  --abyss: #0e2739;
+
+  /* Chart paper — land, cards, anything that rises out of the water. */
+  --paper: #f7f1e6;
+  --paper-warm: #efe4d2;
+
+  /* Ink. `soft` is the darkest tone that still clears 4.5:1 against the
+     deepest water the canvas paints; `dim` clears it on paper only, so it
+     never goes straight onto the sea. */
+  --ink: #10293c;
+  --ink-soft: #1f4157;
+  --ink-dim: #4a6d85;
+
+  /* Magenta: lights, buoys, cautions. */
+  --beacon: #d1567e;
+  --beacon-ink: #a8365c; /* text weight: clears 4.5:1 on paper and on the panels */
+  --beacon-lit: #f2879f;
+  --beacon-wash: rgba(209, 86, 126, 0.12);
+
+  /* Brass — instrument bezels, used sparingly. */
+  --brass: #b8862f;
+
+  --rule: rgba(16, 41, 60, 0.2);
+  --rule-soft: rgba(16, 41, 60, 0.1);
+
+  /* Fills for small surfaces that ride the water — chips, rows, hovers. */
+  --glass: rgba(255, 255, 255, 0.5);
+  --glass-hover: #ffffff;
+
+  --font-display: 'Bodoni Moda', 'Times New Roman', serif;
+  --font-body: 'Barlow', system-ui, sans-serif;
+  --font-label: 'Barlow Condensed', 'Barlow', system-ui, sans-serif;
+  --font-data: 'Azeret Mono', ui-monospace, monospace;
+
+  --shell: 1160px;
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --bar-h: 60px;
+  --rail-w: 0px;
+  --depth: 0; /* scroll progress, 0 at the surface — written by useDepth */
+
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--sea-pale);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  color-scheme: light;
 }
 
-* {
-  box-sizing: border-box;
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; overflow-x: hidden; }
+button, a, input { font: inherit; color: inherit; }
+h1, h2, h3, p, dl, dd, figure { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+
+::selection { color: var(--paper); background: var(--ink); }
+
+:focus-visible {
+  outline: 2px solid var(--beacon-ink);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
-body {
-  margin: 0;
-  min-width: 320px;
-  font-family: var(--font-primary);
+/*
+  Past the dive the water is darker than any ink, so the ink becomes the
+  light. The swap happens in the middle of the penumbra band, where nothing
+  is being read — see useDepth.ts. Every value below clears 4.5:1 against the
+  lightest water this zone ever shows.
+*/
+:root[data-zone='deep'] {
+  --ink: #eaf6fb;
+  --ink-soft: #b7d6e7;
+  --ink-dim: #a6c6d9;
+  --beacon-ink: #f9b7c6;
+  --rule: rgba(214, 238, 248, 0.3);
+  --rule-soft: rgba(214, 238, 248, 0.15);
+  --glass: rgba(255, 255, 255, 0.06);
+  --glass-hover: rgba(255, 255, 255, 0.13);
 }
 
-.has-custom-cursor,
-.has-custom-cursor body,
-.has-custom-cursor *,
-.has-custom-cursor *::before,
-.has-custom-cursor *::after {
-  cursor: none !important;
+/* Surfaces that hold their own colour whatever the water does keep daylight
+   ink — the fixed chrome, and anything printed on paper.
+   `color` has to be restated, not just the tokens: inheritance carries the
+   computed colour down from :root, so re-scoping --ink alone would leave
+   anything that merely inherits (the wordmark, the modal's headings) pale. */
+.bar,
+.rail,
+.bulletin,
+.markcard,
+.ficha__card {
+  color: var(--ink);
+  --ink: #10293c;
+  --ink-soft: #1f4157;
+  --ink-dim: #4a6d85;
+  --beacon-ink: #a8365c;
+  --rule: rgba(16, 41, 60, 0.2);
+  --rule-soft: rgba(16, 41, 60, 0.1);
+  --glass: rgba(255, 255, 255, 0.5);
+  --glass-hover: #ffffff;
 }
 
-#root {
-  min-height: 100svh;
-  font-family: var(--font-primary);
-}
+:root { transition: color 0.7s ease; }
 
-code {
-  font-family: var(--mono);
-}
+@media (min-width: 1100px) { :root { --rail-w: 76px; } }
 
-.custom-cursor {
-  position: fixed;
-  left: 0;
-  top: 0;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0;
-  transform: translate3d(-100px, -100px, 0);
-  transition:
-    opacity 180ms ease,
-    width 220ms ease,
-    height 220ms ease,
-    border-color 220ms ease,
-    background-color 220ms ease,
-    box-shadow 220ms ease;
-}
-
-.custom-cursor[data-visible='true'] {
-  opacity: 1;
-}
-
-.custom-cursor--outer {
-  width: 34px;
-  height: 34px;
-  margin-left: -17px;
-  margin-top: -17px;
-  border: 1px solid rgba(255, 255, 255, 0.48);
-  border-radius: 999px;
-  background:
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02));
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.06),
-    0 10px 30px rgba(0, 0, 0, 0.22);
-  backdrop-filter: blur(6px);
-}
-
-.custom-cursor--outer[data-interactive='true'] {
-  width: 52px;
-  height: 52px;
-  margin-left: -26px;
-  margin-top: -26px;
-  border-color: rgba(255, 196, 120, 0.72);
-  background:
-    radial-gradient(circle at center, rgba(255, 196, 120, 0.22), rgba(255, 196, 120, 0.04));
-  box-shadow:
-    0 0 0 1px rgba(255, 196, 120, 0.18),
-    0 18px 40px rgba(255, 153, 72, 0.2);
-}
-
-.custom-cursor--outer[data-pressed='true'] {
-  width: 30px;
-  height: 30px;
-  margin-left: -15px;
-  margin-top: -15px;
-}
-
-.custom-cursor--inner {
-  width: 8px;
-  height: 8px;
-  margin-left: -4px;
-  margin-top: -4px;
-  border-radius: 999px;
-  background: #fff3dd;
-  box-shadow: 0 0 18px rgba(255, 214, 153, 0.7);
-}
-
-.custom-cursor--inner[data-interactive='true'] {
-  background: #ffc478;
-  box-shadow: 0 0 22px rgba(255, 180, 94, 0.88);
-}
-
-.custom-cursor--inner[data-pressed='true'] {
-  width: 10px;
-  height: 10px;
-  margin-left: -5px;
-  margin-top: -5px;
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -3,7 +3,7 @@ import { alpha } from '@mui/material/styles'
 import { Box, ToggleButton, ToggleButtonGroup, Typography, useTheme } from '@mui/material'
 import type { Language } from '../../i18n/translations'
 import { useI18n } from '../../i18n/useI18n'
-import Orb from '../orb/Orb'
+import Lightfall from '../lightfall/Lightfall'
 import SiteNav from './SiteNav'
 
 interface PageFrameProps {
@@ -13,12 +13,7 @@ interface PageFrameProps {
 const BackgroundLayer = memo(function BackgroundLayer() {
   return (
     <Box className="home-page__background" aria-hidden="true">
-      <Orb
-        hue={22}
-        hoverIntensity={0.5}
-        rotateOnHover
-        backgroundColor="#090d18"
-      />
+      <Lightfall />
     </Box>
   )
 })

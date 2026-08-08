@@ -1,0 +1,12 @@
+.lightfall {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #050816;
+}
+
+.lightfall canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

@@ -15,7 +15,7 @@ import {
 } from '@mui/material'
 import { alpha } from '@mui/material/styles'
 import { AnimatePresence, motion } from 'framer-motion'
-import { useEffect, useMemo, useState, type MouseEvent } from 'react'
+import { useMemo, useState, type MouseEvent } from 'react'
 import { useTheme } from '@mui/material'
 import TiltedCard from '../components/tilted_card/TiltedCard'
 import PageFrame from '../components/layout/PageFrame'
@@ -51,62 +51,62 @@ const projects: ProjectItem[] = [
   {
     title: 'App Mobile Estoque',
     description: 'landingPages',
-    tags: ['React Native', 'JavaScript'],
-    repoUrl: 'https://github.com/vinisilvabariane/app_mobile_estoque.git',
+    tags: ['React Native', 'TypeScript'],
+    repoUrl: 'https://github.com/vinisilvabariane/app_mobile_estoque',
   },
   {
     title: 'Map My Path',
     description: 'uiExperiments',
-    tags: ['PHP', 'Python', 'JavaScript'],
-    repoUrl: 'https://github.com/vinisilvabariane/app_mmp.git',
+    tags: ['PHP', 'JavaScript'],
+    repoUrl: 'https://github.com/vinisilvabariane/app_mmp',
   },
   {
     title: 'Firewatch',
     description: 'designSystems',
     tags: ['PHP', 'Python', 'JavaScript'],
-    repoUrl: 'https://github.com/vinisilvabariane/app_firewatch.git',
+    repoUrl: 'https://github.com/vinisilvabariane/app_firewatch',
   },
   {
     title: 'Lockpick',
     description: 'creativePortfoliosA',
     tags: ['PHP', 'JavaScript'],
-    repoUrl: 'https://github.com/vinisilvabariane/app_lockpick.git',
+    repoUrl: 'https://github.com/vinisilvabariane/app_lockpick',
   },
   {
     title: 'Bitstream',
     description: 'creativePortfoliosB',
     tags: ['PHP', 'JavaScript'],
-    repoUrl: 'https://github.com/vinisilvabariane/app_bitstream.git',
+    repoUrl: 'https://github.com/vinisilvabariane/app_bitstream',
   },
   {
     title: 'Ping Monitor',
     description: 'pingMonitor',
     tags: ['Python'],
-    repoUrl: 'https://github.com/vinisilvabariane/app_ping_monitor.git',
+    repoUrl: 'https://github.com/vinisilvabariane/app_ping_monitor',
   },
   {
     title: 'Calculadora IMC',
     description: 'bmiCalculator',
     tags: ['Java'],
-    repoUrl: 'https://github.com/vinisilvabariane/app_calculadora_imc.git',
+    repoUrl: 'https://github.com/vinisilvabariane/app_calculadora_imc',
   },
   {
     title: 'To-Do API',
     description: 'todoApi',
     tags: ['Java'],
-    repoUrl: 'https://github.com/vinisilvabariane/api_todolist_java_spring.git',
+    repoUrl: 'https://github.com/vinisilvabariane/api_todolist_java_spring',
   },
   {
     title: 'Agência Veículos Premium',
     description: 'vehicleAgencyApp',
     tags: ['C#'],
-    repoUrl: 'https://github.com/vinisilvabariane/app-agencia-veiculos-premium.git',
+    repoUrl: 'https://github.com/vinisilvabariane/app_agencia_veiculos_premium',
   },
   {
     title: 'Analisador de Sentimentos',
     description: 'sentimentAnalyzer',
     tags: ['Python'],
-    repoUrl: 'https://github.com/vinisilvabariane/IA_analisador_de_sentimentos.git',
+    repoUrl: 'https://github.com/vinisilvabariane/ia_analisador_de_sentimentos',
   },
 ]
 
@@ -542,13 +542,10 @@ function Projects() {
   const canGoPrev = activePage > 0
   const canGoNext = activePage < projectPages.length - 1
 
-  useEffect(() => {
+  function selectStack(stack: string) {
+    setSelectedStack(stack)
     setActivePage(0)
-  }, [selectedStack])
-
-  useEffect(() => {
-    setActiveImageIndex(0)
-  }, [selectedProject])
+  }
 
   function goPrev() {
     if (canGoPrev) setActivePage((current) => current - 1)
@@ -559,11 +556,13 @@ function Projects() {
   }
 
   function openProjectDetails(project: ProjectItem) {
+    setActiveImageIndex(0)
     setSelectedProject(project)
   }
 
   function handleProjectActionClick(event: MouseEvent<HTMLButtonElement>, project: ProjectItem) {
     event.stopPropagation()
+    setActiveImageIndex(0)
     setSelectedProject(project)
   }
 
@@ -709,7 +708,7 @@ function Projects() {
                   <Chip
                     label={t.projects.allStacks}
                     clickable
-                    onClick={() => setSelectedStack('all')}
+                    onClick={() => selectStack('all')}
                     variant={selectedStack === 'all' ? 'filled' : 'outlined'}
                     sx={{
                       color:
@@ -729,7 +728,7 @@ function Projects() {
                       key={stack}
                       label={stack}
                       clickable
-                      onClick={() => setSelectedStack(stack)}
+                      onClick={() => selectStack(stack)}
                       variant={selectedStack === stack ? 'filled' : 'outlined'}
                       sx={{
                         color:
